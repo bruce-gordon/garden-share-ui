@@ -11,4 +11,4 @@ deploy:
   on:
     repo: garden-share-08/garden-share-fe
     branch: main
-  skip_cleanup: 'true'
+  # skip_cleanup: 'true'
