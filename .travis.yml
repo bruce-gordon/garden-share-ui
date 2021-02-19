@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- node
+notifications:
+  email: false
+deploy:
+  provider: heroku
+  api_key:
+    secure: RRtgvl2A3xEzBfAA3zhESHI5t4Z9m/pUe3TM9Q1mTC6hEMRXZsa5540Gto1PZ+UBmJX+LSQrevyagGEUU1b2G6rjCE+BoDFg+V45A9kDaY+7EQHA1n2HP/rMo1gUAjtGkQTNVV89aoVPTaa4TMw6+eYGDlAzx957RWtFzoNBwtJR431Xb7lW3371oyKzkTxyfJr/3pSEH12IWrWKn2rYp1GkWg1P2QIlBKUDsi9TyMAqf8g8oimqblg7y+SemaWTJOb4c840Rhf9rZN8VO0goagbAQqUCO6/aZI/nctZ2lilE2Dd2UJFVow/GrDaTJERTnK4OQc71mZhELyyjqSShEa9lhRGf+VvonTTWKIjGR7TvdBPK53E0zwEcbf9Vi5u2LI5jccj+hgv2XMLADS0DLfbtKu808j5lhqiEKfDZNa5sTFmwcKV/n3HzA/02Zjet0Blg7KTNrORxvIIZ14Az7TkkiDEFobi2SxV/4kzanWsWFhXh6FTutEQlkzf3zS0NVrmHOEXvVsPcIfJCoatluOnkKOfOVadEGs77Vno3TdB5SO9akhYwqIWSwGSk0Tm1K8uHgK5CFCJl4MlZLQduZxLfRSClK7fqo5twH+wS8BiMiS10HVXr6PaSfd/svfQDhkPPt0wezKHhPFgY8kM72qaZEyd3/Ymstmstq1kj5s=
+  app: garden-share-fe
+  on:
+    repo: garden-share-08/garden-share-fe
+    branch: main
+  skip_cleanup: 'true'
