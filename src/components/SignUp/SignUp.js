@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 // import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
-export default function SignUp() {
+function SignUp() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -56,3 +56,5 @@ export default function SignUp() {
     </>
   )
 }
+
+export default SignUp;
