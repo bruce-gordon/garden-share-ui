@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Link, useHistory } from "react-router-dom"
 
 
-function Login() {
+const Login = () => {
   const emailRef = useRef()
   const passwordRef = useRef()
   // const { login } = useAuth()
@@ -11,7 +11,7 @@ function Login() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       setError('')
@@ -22,6 +22,12 @@ function Login() {
       setError("Failed to find account")
     }
     setLoading(false)
+  }
+
+  const checkAuth = () => {
+    // if isAuthenticated  = true, return path to homepage
+    // if false, stay on login with error/warning displayed
+    return '/homepage'
   }
 
   return (
@@ -38,11 +44,13 @@ function Login() {
               <label>Password</label>
               <input type="password" ref={passwordRef} required />
             </div>
-            <button disabled={loading} className="w-100" type="submit">Log In</button>
+            <Link to={ checkAuth }>
+              <button disabled={loading} className="w-100" type="submit">Log In</button>
+            </Link>
           </form>
       </div>
       <div className="w-100 text-center mt-2">
-        Don't have an account? <Link to="/signup">Sign Up</Link>
+        Don't have an account? <Link to="/sign-up">Sign Up</Link>
       </div>
     </>
   )

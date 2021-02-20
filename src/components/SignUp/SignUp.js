@@ -6,7 +6,7 @@ function SignUp() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
-  const { signup } = useAuth()
+  // const { signup } = useAuth()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -20,7 +20,7 @@ function SignUp() {
     try {
       setError('')
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      // await signup(emailRef.current.value, passwordRef.current.value)
       history.push("/")
     } catch {
       setError("Failed to create an account")
@@ -33,7 +33,7 @@ function SignUp() {
     <>
       <div>
           <h2 className="text-center mb-4">Sign Up</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {/* {error && <Alert variant="danger">{error}</Alert>} */}
           <form onSubmit={handleSubmit}>
             <div id="email">
               <label>Email</label>
@@ -47,7 +47,9 @@ function SignUp() {
               <label>Password Confirmation</label>
               <input type="password" ref={passwordConfirmRef} required />
             </div>
-            <button disabled={loading} className="w-100" type="submit">Sign Up</button>
+            <Link to='/homepage'>
+              <button disabled={loading} className="w-100" type="submit">Sign Up</button>
+            </Link>
           </form>
       </div>
       <div className="w-100 text-center mt-2">
