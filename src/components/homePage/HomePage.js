@@ -5,7 +5,7 @@ import ProductCard from '../productCard/ProductCard.js'
 export default function HomePage() {
   const [listingData, setListingData] = useState([])
   const [sortedListings, setSortedListings] = useState([])
-
+  const [selectedValue, setSelectedValue] = useState([])
   useEffect(() => {
     setListingData(mockData.data.getListings)
   })
@@ -23,14 +23,35 @@ export default function HomePage() {
   const capitalizeLetters = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
+  
+  const filterByOption = (event) => {
+    let dropdown = document.getElementById('types')
+  
+    return listingData.filter(product => {
+      return (product.produceName == dropdown.value)
+    })
+  }
 
   const dropdownOptions = getDropdownValues(listingData).map(listing => {
     return(
-      <option value={ listing }>
+      <option value={listing} onChange={ () => filterByOption() }>
         { listing }
       </option>
     )
   })
+
+  const filteredProducts = filterByOption().map(listing => {
+    return (
+      <ProductCard
+        produceName={listing.produceName}
+        type={listing.type}
+        quantity={listing.quantity}
+        unit={listing.unit}
+        zipCode={listing.zipCode}
+      />
+    )
+  })
+
 
   const products = listingData.map(listing => {
     return (
@@ -47,15 +68,15 @@ export default function HomePage() {
   return (
     <div>
       <h2>Available Produce In Your Area</h2>
-      <label htmlFor='vegetable-types'>Vegetable Types</label>
-      <select id='vegetable-types'>
+      <label htmlFor='types'>Vegetable Types</label>
+      <select id='types'>
         <option value=''>
           Select
         </option>
         { dropdownOptions }
       </select>
       <div>
-        { products }
+        { filteredProducts }
       </div>
     </div>
   )
