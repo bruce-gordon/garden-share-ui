@@ -1,6 +1,5 @@
 const allListingsInitialState = {
-  listingData: [],
-  selectedValue: ''
+  listingData: []
 }
 
 const allListings = (state = allListingsInitialState, action) => {

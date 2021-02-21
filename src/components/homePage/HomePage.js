@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import mockData from '../../mockData'
+import mockData from '../../mockData/mockData.js'
 import ProductCard from '../productCard/ProductCard.js'
 import { updateListingData } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
