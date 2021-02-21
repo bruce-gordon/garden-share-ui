@@ -35,9 +35,9 @@ export default function HomePage() {
     }
   }
 
-  const dropdownOptions = getDropdownValues(listingData).map(listing => {
+  const dropdownOptions = getDropdownValues(listingData).map((listing, index) => {
     return (
-      <option value={listing}>
+      <option key={index} value={listing}>
         { capitalizeLetter(listing) }
       </option>
     )

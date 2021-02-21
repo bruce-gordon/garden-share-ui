@@ -13,9 +13,7 @@ function App() {
         <NavBar />
       </div>
       <Switch>
-        // <Route path='/login'>
-        //   <Login />
-        // </Route>
+
         <Route path='/sign-up'>
           <SignUp />
         </Route>
