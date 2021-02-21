@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.items {
+  border: 3px solid black;
+  flex-direction: column;
+}
+
+.form-space {
+  margin: 1em
+}

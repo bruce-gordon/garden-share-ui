@@ -14,11 +14,9 @@ const HomePage = ({ listingData }) => {
   useEffect(() => {
     dispatch(updateListingData(mockData.data.getListings))
     // setListingData(mockData.data.getListings)
-    console.log('howdy!')
   }, [])
 
   const getDropdownValues = (veggies) => {
-    console.log(veggies)
     return veggies.reduce((total, veggie) => {
       if (!total.includes(veggie.produceName)) {
         total.push(veggie.produceName)
@@ -87,7 +85,7 @@ const HomePage = ({ listingData }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateListingData: text => dispatch( updateListingData(text) )
+  updateListingData: text => dispatch(updateListingData(text))
 })
 
 function homePageState(state) {
@@ -96,4 +94,4 @@ function homePageState(state) {
   }
 }
 
-export default connect(homePageState, mapDispatchToProps )(HomePage)
+export default connect( homePageState, mapDispatchToProps )(HomePage)
