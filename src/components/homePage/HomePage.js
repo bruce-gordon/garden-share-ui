@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import mockData from '../productContainer/mockData'
+import mockData from '../../mockData'
 import ProductCard from '../productCard/ProductCard.js'
 
 export default function HomePage() {
@@ -46,23 +46,13 @@ export default function HomePage() {
   const filteredProducts = filterByOption().map(listing => {
     return (
       <ProductCard
+        key={listing.id}
+        id={listing.id}
         produceName={capitalizeLetter(listing.produceName)}
         type={capitalizeLetter(listing.type)}
         quantity={listing.quantity}
         unit={listing.unit}
         zipCode={listing.zipCode}
-      />
-    )
-  })
-
-  const products = listingData.map(listing => {
-    return (
-      <ProductCard
-        produceName={ listing.produceName }
-        type={ listing.type }
-        quantity={ listing.quantity }
-        unit={ listing.unit }
-        zipCode={ listing.zipCode }
       />
     )
   })
