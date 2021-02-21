@@ -1,15 +1,29 @@
 import './App.scss';
 import React from 'react';
+import { Switch, Route } from 'react-router-dom'
+import NavBar from '../navBar/NavBar.js';
+import Login from '../login/Login.js'
+import SignUp from '../signUp/SignUp.js'
+import HomePage from '../homePage/HomePage.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <main>
+      <div className="App">
+        <NavBar />
+      </div>
+      <Switch>
+        <Route path='/login'>
+          <Login />
+        </Route>
+        <Route path='/sign-up'>
+          <SignUp />
+        </Route>
+        <Route path='/homepage'>
+          <HomePage />
+        </Route>
+      </Switch>
+    </main>
   );
 }
 

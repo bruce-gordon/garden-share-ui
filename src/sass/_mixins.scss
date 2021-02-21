@@ -1,5 +1,7 @@
 // Template for mixins
 
-// @mixin name () {
-//
-// }
+@mixin nav () {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

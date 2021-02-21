@@ -1,0 +1,12 @@
+@import '../../sass/mixins';
+
+.navBar {
+  @include nav();
+  padding: 2em;
+  border-bottom: solid 2px black;
+}
+
+.navOptions {
+  @include nav();
+  width: 50%;
+}

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import UserOffer from './UserOffer';
 import { MemoryRouter } from 'react-router-dom';
 
 test('renders learn react link', () => {
   render(
     <MemoryRouter>
-      <App />
+      <UserOffer />
     </MemoryRouter>
   );
 
