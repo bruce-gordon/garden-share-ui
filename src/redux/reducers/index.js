@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-//import other reducers for all parts of state
+import allListings from './allListings.js'
 
 const rootReducer = combineReducers({
-
+  allListings
 })
 
 export default rootReducer;
