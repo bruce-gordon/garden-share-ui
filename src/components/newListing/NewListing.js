@@ -1,3 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-export default NewListing;
+export default function NewListing() {
+  return (
+    <div>
+      New Listing
+    </div>
+  )
+}
