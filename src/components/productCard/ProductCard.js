@@ -5,7 +5,7 @@ export default function ProductCard({ produceName, type, quantity, unit, zipCode
   return (
     <div className='productCard'>
       <h3 className='cardHeader'>{ produceName }</h3>
-      <p>Type: { type }</p>
+      <p>Type: <i>{ type }</i></p>
       <p>{ quantity } { unit }</p>
       <p>Zip Code: { zipCode }</p>
     </div>

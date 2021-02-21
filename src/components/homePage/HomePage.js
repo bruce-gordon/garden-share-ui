@@ -5,37 +5,40 @@ import ProductCard from '../productCard/ProductCard.js'
 export default function HomePage() {
   const [listingData, setListingData] = useState([])
   const [sortedListings, setSortedListings] = useState([])
-  const [selectedValue, setSelectedValue] = useState([])
+  const [selectedValue, setSelectedValue] = useState('')
+
   useEffect(() => {
     setListingData(mockData.data.getListings)
   })
 
   const getDropdownValues = (veggies) => {
     return veggies.reduce((total, veggie) => {
-      const capitalVeggie = capitalizeLetters(veggie.produceName)
-      if (!total.includes(capitalVeggie)) {
-        total.push(capitalVeggie)
+      if (!total.includes(veggie.produceName)) {
+        total.push(veggie.produceName)
       }
       return total
       }, [])
   }
 
-  const capitalizeLetters = (word) => {
+  const capitalizeLetter = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
-  
-  const filterByOption = (event) => {
-    let dropdown = document.getElementById('types')
-  
-    return listingData.filter(product => {
-      return (product.produceName == dropdown.value)
-    })
+
+  const filterByOption = () => {
+    let dropdown = document.getElementById('productTypes')
+    if (selectedValue) {
+      return listingData.filter(product => {
+        return (product.produceName === dropdown.value)
+      })
+    } else {
+      return listingData
+    }
   }
 
   const dropdownOptions = getDropdownValues(listingData).map(listing => {
-    return(
-      <option value={listing} onChange={ () => filterByOption() }>
-        { listing }
+    return (
+      <option value={listing}>
+        { capitalizeLetter(listing) }
       </option>
     )
   })
@@ -43,8 +46,8 @@ export default function HomePage() {
   const filteredProducts = filterByOption().map(listing => {
     return (
       <ProductCard
-        produceName={listing.produceName}
-        type={listing.type}
+        produceName={capitalizeLetter(listing.produceName)}
+        type={capitalizeLetter(listing.type)}
         quantity={listing.quantity}
         unit={listing.unit}
         zipCode={listing.zipCode}
@@ -52,11 +55,10 @@ export default function HomePage() {
     )
   })
 
-
   const products = listingData.map(listing => {
     return (
-      <ProductCard 
-        produceName={ listing.produceName } 
+      <ProductCard
+        produceName={ listing.produceName }
         type={ listing.type }
         quantity={ listing.quantity }
         unit={ listing.unit }
@@ -65,16 +67,21 @@ export default function HomePage() {
     )
   })
 
+  const handleChange = (e) => {
+    setSelectedValue(e.target.value)
+  }
+
   return (
     <div>
       <h2>Available Produce In Your Area</h2>
-      <label htmlFor='types'>Vegetable Types</label>
-      <select id='types'>
-        <option value=''>
-          Select
-        </option>
-        { dropdownOptions }
-      </select>
+      <label htmlFor='productTypes'>Vegetable Types
+        <select id='productTypes' value={ selectedValue } onChange={ handleChange }>
+          <option value=''>
+            All Listings
+          </option>
+          { dropdownOptions }
+        </select>
+      </label>
       <div>
         { filteredProducts }
       </div>
