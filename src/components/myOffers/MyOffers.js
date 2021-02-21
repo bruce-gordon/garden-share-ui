@@ -1,3 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-export default MyOffers;
+export default function MyOffers() {
+  return (
+    <div>
+      My Offers
+    </div>
+  )
+}

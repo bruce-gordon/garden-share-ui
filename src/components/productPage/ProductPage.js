@@ -1,3 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-export default ProductPage;
+export default function ProductPage() {
+  return (
+    <div>
+      Product Page
+    </div>
+  )
+}
+
