@@ -1,17 +1,18 @@
 import React from 'react';
 import './NavBar.scss';
-
+import { Link } from 'react-router-dom';
+import GardenShareLogo from '../../images/GardenShareLogo.png';
 const NavBar = () => {
 
   return(
     <nav className="navBar">
       <div className="navOptions"> 
-        <p>Garden Share</p>
-        <p>Profile</p>
-        <p>Create New Listing</p>
-        <p>About</p>
+        <Link to='/homepage' className='logoLink'><img src={GardenShareLogo} className='logo' /></Link> 
+        <Link to='/profile' className='link'>Profile</Link>
+        <Link to='/create-new-listing' className='link'>Create New Listing</Link>
+        <Link to='/about' className='link'>About</Link>
       </div>
-      <p>Log Out</p>
+      <Link to='/login' className='logOut'>Log Out</Link>
     </nav>
   )
 }
