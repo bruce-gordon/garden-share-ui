@@ -1,7 +1,12 @@
 import React from 'react'
 import './Form.scss'
 
-const Form = () => {
+const Form = ({ submitFunc }) => {
+
+  const handleSubmit = () => {
+    submitFunc()
+  }
+
   return (
     <div className='form'>
       <form className='form items'>
@@ -16,6 +21,7 @@ const Form = () => {
         <input className='form-space' type='number' placeholder='Quantity' />
         <input className='form-space' type='text' placeholder='Units (ex: lbs)' />
         <input className='form-space' type='date' placeholder='Date Harvested' />
+        <button onClick={ handleSubmit }>Submit</button>
       </form>
     </div>
   )

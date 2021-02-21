@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
 import { updateProductPageData } from '../../redux/actions/actions.js'
@@ -17,21 +17,31 @@ const ProductPage = ({ id, product }) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  return (
-    <div>
-      { console.log(product) }
-      <h2>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
+  const makeOffer = () => {
+    
+  }
+
+  if (product.produceType) {
+    return (
       <div>
-        <p>{ product.quantity } { product.unit }</p>
-        <p>{ product.description }</p>
-        <p>Grown by: { product.user.firstName }</p>
-        <p>Harvested on: { product.dateHarvested }</p>
-        <p>Zip Code: { product.zipCode }</p>
+        { console.log(product) }
+        <h2>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
+        <div>
+          <p>{ product.quantity } { product.unit }</p>
+          <p>{ product.description }</p>
+          <p>Grown by: { product.user.firstName }</p>
+          <p>Harvested on: { product.dateHarvested }</p>
+          <p>Zip Code: { product.zipCode }</p>
+        </div>
+        <Form
+          submitFunc={ makeOffer }
+        />
+
       </div>
-      <Form />
-      <button>Make Offer</button>
-    </div>
-  )
+    )
+  } else {
+    return null
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
