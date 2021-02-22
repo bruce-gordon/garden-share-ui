@@ -33,6 +33,7 @@ const ProductPage = ({ id, product }) => {
           <p>Harvested on: { product.dateHarvested }</p>
           <p>Zip Code: { product.zipCode }</p>
         </div>
+        <h3>Complete the form to make an Offer</h3>
         <Form
           submitFunc={ makeOffer }
         />
