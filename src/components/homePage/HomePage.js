@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import mockData from '../../mockData'
+import mockData from '../../mockData/mockData.js'
 import ProductCard from '../productCard/ProductCard.js'
+import { updateListingData } from '../../redux/actions/actions.js'
+import { connect, useDispatch } from 'react-redux'
 
-export default function HomePage() {
-  const [listingData, setListingData] = useState([])
-  const [sortedListings, setSortedListings] = useState([])
+const HomePage = ({ listingData }) => {
+  // const [listingData, setListingData] = useState([])
+  // const [sortedListings, setSortedListings] = useState([])
   const [selectedValue, setSelectedValue] = useState('')
 
+  const dispatch = useDispatch()
+
   useEffect(() => {
-    setListingData(mockData.data.getListings)
-  })
+    dispatch(updateListingData(mockData.data.getListings))
+    // setListingData(mockData.data.getListings)
+  }, [])
 
   const getDropdownValues = (veggies) => {
     return veggies.reduce((total, veggie) => {
@@ -78,3 +83,15 @@ export default function HomePage() {
     </div>
   )
 }
+
+const mapDispatchToProps = dispatch => ({
+  updateListingData: text => dispatch(updateListingData(text))
+})
+
+function homePageState(state) {
+  return {
+    listingData: state.allListings.listingData
+  }
+}
+
+export default connect( homePageState, mapDispatchToProps )(HomePage)
