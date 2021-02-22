@@ -5,6 +5,8 @@ import '@testing-library/jest-dom';
 
 describe('App', () => {
   beforeEach(() => {
+    /* will need states within App required for logged in 
+    and logged out versions of app more tests needed */
     render(
       <MemoryRouter>
         <App />
@@ -63,14 +65,12 @@ describe('App', () => {
   })
 
   it.skip('should display new listing when new listing is created', async () => {
-    // more to place here
+    /* more to place here, fill inputs, navigation to create new listing*/
     const submitButton = screen.getByText(text)
     userEvent.click(submitButton)
     const homeLogo = await waitFor(() => screen.getbyAltText('Garden Share Logo'))
     userEvent.click(homeLogo)
-    const stashTab = screen.getByText('Foxy Stash')
-    userEvent.click(stashTab)
-    const quote = await waitFor(() => screen.getByText('If you aren\'t going all the way, why go at all?'))
-    expect(quote).toBeInTheDocument()
+    const newListing = screen.getByText('new listing text here')
+    expect(newListing).toBeInTheDocument()
   })
 })
