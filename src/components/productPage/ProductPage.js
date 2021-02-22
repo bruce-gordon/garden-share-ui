@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
-import { updateProductPageData } from '../../redux/actions/actions.js'
+import { updateProductPageData, updateUserOffers } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 
 const ProductPage = ({ id, product }) => {
@@ -17,8 +17,9 @@ const ProductPage = ({ id, product }) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  const makeOffer = () => {
-    
+  const makeOffer = ( data) => {
+    console.log('data', data)
+    dispatch(updateUserOffers(id, data))
   }
 
   if (product.produceType) {
@@ -33,6 +34,7 @@ const ProductPage = ({ id, product }) => {
           <p>Harvested on: { product.dateHarvested }</p>
           <p>Zip Code: { product.zipCode }</p>
         </div>
+        <h3>Complete the form to make an Offer</h3>
         <Form
           submitFunc={ makeOffer }
         />
@@ -45,7 +47,8 @@ const ProductPage = ({ id, product }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateProductPageData: text => dispatch(updateProductPageData(text))
+  updateProductPageData: text => dispatch(updateProductPageData(text)),
+  updateUserOffers: text => dispatch(updateUserOffers(text))
 })
 
 function productPageState(state) {
