@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Form.scss'
 
-const Form = ({ listingId, submitFunc }) => {
+const Form = ({ submitFunc }) => {
 
   // const [itemName, setItemName] = useState('')
   // const [itemType, setItemType] = useState('')
@@ -14,13 +14,13 @@ const Form = ({ listingId, submitFunc }) => {
     itemType: '', 
     description: '', 
     quantity: '', 
-    units: '', 
+    unit: '', 
     date: '' 
   })
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    submitFunc(listingId, state)
+    submitFunc(state)
   }
 
   const handleChange = (e) => {
@@ -41,7 +41,7 @@ const Form = ({ listingId, submitFunc }) => {
         <input className='form-space' type='text' placeholder='Type' value={ state.itemType } name='itemType' onChange={ handleChange } />
         <input className='form-space' type='text' placeholder='Description' value={ state.description } name='description' onChange={ handleChange } />
         <input className='form-space' type='number' placeholder='Quantity' value={ state.quantity } name='quantity' onChange={ handleChange } />
-        <input className='form-space' type='text' placeholder='Units (ex: lbs)' value={ state.units } name='units' onChange={ handleChange } />
+        <input className='form-space' type='text' placeholder='unit (ex: lbs)' value={ state.unit } name='unit' onChange={ handleChange } />
         <input className='form-space' type='date' placeholder='Date Harvested' value={ state.date } name='date' onChange={ handleChange } />
         <button onClick={ handleSubmit }>Submit</button>
       </form>

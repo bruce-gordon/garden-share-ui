@@ -17,9 +17,9 @@ const ProductPage = ({ id, product }) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  const makeOffer = (listingId, data) => {
-    console.log('data', listingId, data)
-    dispatch(updateUserOffers(listingId, data))
+  const makeOffer = ( data) => {
+    console.log('data', data)
+    dispatch(updateUserOffers(id, data))
   }
 
   if (product.produceType) {
@@ -36,7 +36,6 @@ const ProductPage = ({ id, product }) => {
         </div>
         <h3>Complete the form to make an Offer</h3>
         <Form
-          listingId={ id }
           submitFunc={ makeOffer }
         />
 
