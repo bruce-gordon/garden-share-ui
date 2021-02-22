@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Form.scss'
 
-const Form = ({ submitFunc }) => {
+const Form = ({ listingId, submitFunc }) => {
 
   // const [itemName, setItemName] = useState('')
   // const [itemType, setItemType] = useState('')
@@ -20,7 +20,7 @@ const Form = ({ submitFunc }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    submitFunc()
+    submitFunc(listingId, state)
   }
 
   const handleChange = (e) => {
