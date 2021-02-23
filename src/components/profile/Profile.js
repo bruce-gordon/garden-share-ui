@@ -1,6 +1,7 @@
 import React from 'react';
 import './Profile.scss';
 import MyListings from '../myListings/MyListings.js'
+import MyOffers from '../myOffers/MyOffers.js'
 
 const Profile = () => {
   return (
@@ -10,7 +11,12 @@ const Profile = () => {
         <button>My Listings</button>
         <button>My Offers</button>
       </div>
-      <MyListings />
+      <div>
+        <MyListings />
+      </div>
+      <div>
+        <MyOffers />
+      </div>
       {/* {Conditional for rendering Listings/Offers Views} */}
     </div>
   )
