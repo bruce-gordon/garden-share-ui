@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import UserListing from '../userListing/UserListing.js'
+import UserListing from '../userListing/userListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
@@ -9,9 +9,9 @@ const MyListings = ({ myListings }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('mock user listings', mockUserListings.data.getUserListings.listings)
+    // console.log('mock user listings', mockUserListings.data.getUserListings.listings)
     dispatch(updateUserListings("userId", mockUserListings.data.getUserListings.listings))
-    console.log('filtered listings', filterListings(myListings, 'open'))
+    // console.log('filtered listings', filterListings(myListings, 'open'))
   }, [])
 
   const filterListings = (listings, listingType) => {
