@@ -3,16 +3,6 @@ import App from './App';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
-<<<<<<< HEAD
-test.skip('renders learn react link', () => {
-  render(
-    <MemoryRouter>
-      <App />
-    </MemoryRouter>
-  );
-=======
->>>>>>> 5bfa720... Write new App tests  for future use
-
 describe('App', () => {
   beforeEach(() => {
     render(
