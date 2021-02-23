@@ -47,12 +47,3 @@ describe('Form', () => {
     expect(logInButton).toBeInTheDocument()
   })
 })
-
-<<<<<<< HEAD
-test.skip('renders learn react link', () => {
-  render(
-      <Form />
-  );
-=======
->>>>>>> 8a31913... Write Form tests for future use
-

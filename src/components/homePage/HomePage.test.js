@@ -3,14 +3,6 @@ import HomePage from './HomePage';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
-<<<<<<< HEAD
-test.skip('renders learn react link', () => {
-  render(
-    <MemoryRouter>
-      <HomePage />
-    </MemoryRouter>
-  );
-=======
 describe('Homepage', () => {
   beforeEach(() => {
     render(
@@ -57,5 +49,4 @@ describe('Homepage', () => {
     const tomato2 = screen.getByTestId('variety')
   })
 })
->>>>>>> 594ee88... Write new Homepage tests for future use
 
