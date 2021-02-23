@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserListing.scss';
 
-const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units, offers }) => {
+const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units, offers, status }) => {
 
   const allOffers = offers.map(offer => {
     return(
@@ -15,6 +15,12 @@ const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units,
           <button>Accept</button>
           <button>Decline</button>
         </div>
+        }
+        { offer.status === 'accepted' && 
+          <div>
+            <p>{ offer.user.firstName }</p>
+            <p>{ offer.user.email }</p>
+          </div>
         }
       </div>
     )
@@ -41,6 +47,9 @@ const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units,
         <p>Listing Item</p>
         <p>Quantity</p>
         <p>Unit</p>
+        {status === 'accepted' && 
+          <p>Gardener Info</p>
+        }
       </div>
       <div>
         { allOffers }

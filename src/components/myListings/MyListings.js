@@ -5,13 +5,11 @@ import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
 
 const MyListings = ({ myListings }) => {
-  // console.log(mockUserListings)
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // console.log('mock user listings', mockUserListings.data.getUserListings.listings)
     dispatch(updateUserListings("userId", mockUserListings.data.getUserListings.listings))
-    // console.log('filtered listings', filterListings(myListings, 'open'))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -33,6 +31,7 @@ const MyListings = ({ myListings }) => {
         quantity={ listing.quantity }
         units={ listing.units }
         offers={ listing.offers }
+        status={ listing.status }
       />
     )
   })
@@ -48,6 +47,7 @@ const MyListings = ({ myListings }) => {
         quantity={ listing.quantity }
         units={ listing.units }
         offers={ listing.offers }
+        status={ listing.status }
       />
     )
   })

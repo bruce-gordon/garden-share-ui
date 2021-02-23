@@ -39,7 +39,7 @@ function App() {
         <Route path='/create-new-listing'>
           <NewListingPage />
         </Route>
-        <Route path={'/profile/:id'}>
+        <Route path={'/profile'}>
           <Profile />
         </Route>
       </Switch>

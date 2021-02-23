@@ -1,23 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Profile.scss';
 import MyListings from '../myListings/MyListings.js'
 import MyOffers from '../myOffers/MyOffers.js'
 
 const Profile = () => {
+
+  const [view, setView] = useState(true)
+
+  const handleClick = (e) => {
+    if(e.target.innerText === 'My Listings') {
+      setView(true)
+    } else if (e.target.innerText === 'My Offers') {
+      setView(false)
+    }
+  }
+
   return (
     <div>
       <h2>User Name</h2>
       <div>
-        <button>My Listings</button>
-        <button>My Offers</button>
+        <button onClick={ handleClick }>My Listings</button>
+        <button onClick={ handleClick }>My Offers</button>
       </div>
       <div>
-        <MyListings />
+        { view && <MyListings /> }
       </div>
       <div>
-        <MyOffers />
+        { !view && <MyOffers /> }
       </div>
-      {/* {Conditional for rendering Listings/Offers Views} */}
     </div>
   )
 }

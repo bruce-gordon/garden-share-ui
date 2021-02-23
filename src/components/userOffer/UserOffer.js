@@ -11,7 +11,7 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
         <p>{ offer.quantity }</p>
         <p>{ offer.unit }</p>
         {offer.status === 'accepted' && 
-        <p>{ listingUser.firstName }</p>
+          <p>{ listingUser.firstName }</p>
         }
       </div>
     )
