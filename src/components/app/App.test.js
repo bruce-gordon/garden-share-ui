@@ -68,7 +68,7 @@ describe('App', () => {
     /* more to place here, fill inputs, navigation to create new listing*/
     const submitButton = screen.getByText(text)
     userEvent.click(submitButton)
-    const homeLogo = await waitFor(() => screen.getbyAltText('Garden Share Logo'))
+    const homeLogo = await waitFor(() => screen.getByTestId('gardenShareLogo'))
     userEvent.click(homeLogo)
     const newListing = screen.getByText('new listing text here')
     expect(newListing).toBeInTheDocument()
