@@ -1,4 +1,5 @@
 @import '../../sass/mixins';
+@import '../../sass/variables';
 
 .navBar {
   @include nav();
@@ -17,81 +18,21 @@
 }
 
 .link{
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  padding: 6px 20px;
-  margin: 0;
-  cursor: pointer;
-  border: 1px solid #bbb;
-  overflow: visible;
-  font: bold 13px arial, helvetica, sans-serif;
-  text-decoration: none;
-  white-space: nowrap;
-  color: rgb(255, 255, 255);
-  background-color: rgb(26,100,25);
-  background-image: linear-gradient(top, rgba(255,255,255,1),
-                                         rgba(255,255,255,0)),
-                    url(data:image/png;base64,iVBORw0KGg[...]QmCC); 
-  transition: background-color .2s ease-out;
-  background-clip: padding-box; /* Fix bleeding */
-  border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
-              0 2px 2px -1px rgba(0, 0, 0, .5),
-              0 1px 0 rgba(255, 255, 255, .3) inset;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);  
-  height: fit-content;
-}
-
-.link:hover{
-  background-color: #4e724e;
-  color: rgb(255, 255, 255);
-}
-
-.link:active{
-  background: #778e77;
-  position: relative;
-  top: 1px;
-  text-shadow: none;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+  @include button(rgb(26,100,25));
+  &:hover {
+    @include button-hover(#4e724e);
+  }
+  &:active {
+    @include button-active(#778e77);
+  }
 }
 
 .logOut{
-  display: inline-block;
-  *display: inline;
-  zoom: 1;
-  padding: 6px 20px;
-  margin: 0;
-  cursor: pointer;
-  border: 1px solid #bbb;
-  overflow: visible;
-  font: bold 13px arial, helvetica, sans-serif;
-  text-decoration: none;
-  white-space: nowrap;
-  color: rgb(255, 255, 255);
-  background-color: #aa4c21;
-  background-image: linear-gradient(top, rgba(255,255,255,1),
-                                         rgba(255,255,255,0)),
-                    url(data:image/png;base64,iVBORw0KGg[...]QmCC); 
-  transition: background-color .2s ease-out;
-  background-clip: padding-box; /* Fix bleeding */
-  border-radius: 3px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, .3),
-              0 2px 2px -1px rgba(0, 0, 0, .5),
-              0 1px 0 rgba(255, 255, 255, .3) inset;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.9);  
-  height: fit-content;
-}
-
-.logOut:hover{
-  background-color: #bd6c46;
-  color: rgb(255, 255, 255);
-}
-
-.logOut:active{
-  background: #d89d82;
-  position: relative;
-  top: 1px;
-  text-shadow: none;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .3) inset;
+  @include button(#aa4c21);
+  &:hover {
+    @include button-hover(#bd6c46);
+  }
+  &:active {
+    @include button-active(#d89d82);
+  }
 }

@@ -16,11 +16,11 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <h2>User Name</h2>
-      <div>
-        <button onClick={ handleClick }>My Listings</button>
-        <button onClick={ handleClick }>My Offers</button>
+    <div className='profile-page'>
+      <h2 className='user-name'>User Name</h2>
+      <div className='button-container'>
+        <button className='profile-button' onClick={ handleClick }>My Listings</button>
+        <button className='profile-button' onClick={ handleClick }>My Offers</button>
       </div>
       <div>
         { view && <MyListings /> }
