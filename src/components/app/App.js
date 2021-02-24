@@ -7,6 +7,7 @@ import SignUp from '../signUp/SignUp.js'
 import HomePage from '../homePage/HomePage.js'
 import ProductPage from '../productPage/ProductPage.js'
 import NewListingPage from '../newListingPage/NewListingPage.js'
+import Profile from '../profile/Profile.js'
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path='/create-new-listing'>
           <NewListingPage />
+        </Route>
+        <Route path={'/profile'}>
+          <Profile />
         </Route>
       </Switch>
     </main>

@@ -1,9 +1,60 @@
 import React from 'react';
 import './UserListing.scss';
 
-const UserListing = () => {
+const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units, offers, status }) => {
+
+  const allOffers = offers.map(offer => {
+    return(
+      <div style={{border: '3px solid green'}} id={ id } key={ id } >
+        <p>{ offer.updatedAt }</p>
+        <p>{ offer.produceType } { offer.produceName }</p>
+        <p>{ offer.quantity }</p>
+        <p>{ offer.units }</p>
+        { offer.status === 'pending' &&         
+        <div>
+          <button>Accept</button>
+          <button>Decline</button>
+        </div>
+        }
+        { offer.status === 'accepted' && 
+          <div>
+            <p>{ offer.user.firstName }</p>
+            <p>{ offer.user.email }</p>
+          </div>
+        }
+      </div>
+    )
+  })
+
   return (
-    <p>UserListing</p>
+    <div>
+      <h4>Listing</h4>
+      <div style={{border: '3px solid red'}}>
+        <p>Date Posted</p>
+        <p>Listing Item</p>
+        <p>Quantity</p>
+        <p>Unit</p>
+      </div>
+      <div style={{border: '3px solid blue'}} id={ id }>
+        <p>{ updatedAt }</p>
+        <p>{ produceType } { produceName }</p>
+        <p>{ quantity }</p>
+        <p>{ units }</p>
+      </div>
+      <h4>Offers</h4>
+      <div style={{border: '3px solid yellow'}}>
+        <p>Date Posted</p>
+        <p>Listing Item</p>
+        <p>Quantity</p>
+        <p>Unit</p>
+        {status === 'accepted' && 
+          <p>Gardener Info</p>
+        }
+      </div>
+      <div>
+        { allOffers }
+      </div>
+    </div>
   )
 }
 

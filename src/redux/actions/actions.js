@@ -13,3 +13,8 @@ export const updateUserOffers = (userId, data) => ({
   type: 'SET_USER_OFFERS',
   data
 })
+
+export const updateUserListings = (userId, data) => ({
+  type: 'SET_USER_LISTINGS',
+  data
+})
