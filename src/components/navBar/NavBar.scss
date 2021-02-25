@@ -5,25 +5,35 @@
   @include nav();
   box-sizing: border-box;
   width: 100%;
-  padding: 2em;
+  padding: 1em;
   border-bottom: solid 2px black;
 }
 
-.logo {
-  height: 75px;
+.navOptions {
+  display: flex;
+  align-content: center;
+  height: 5em;
 }
+
+.logo {
+  height: 4.5em;
+  &:hover {
+    border: 2px solid black;
+  }
+}
+
 .navOptions {
   @include nav();
-  width: 50%;
+  width: 40%;
 }
 
 .link{
-  @include button(rgb(26,100,25));
+  @include button($navBarGreen);
   &:hover {
-    @include button-hover(#4e724e);
+    @include button-hover($navBarHover);
   }
   &:active {
-    @include button-active(#778e77);
+    @include button-active($navBarActive);
   }
 }
 

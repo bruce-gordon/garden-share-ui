@@ -5,15 +5,13 @@ import { updateListingData } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 
 const HomePage = ({ listingData }) => {
-  // const [listingData, setListingData] = useState([])
-  // const [sortedListings, setSortedListings] = useState([])
+
   const [selectedValue, setSelectedValue] = useState('')
 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(updateListingData(mockData.data.getListings))
-    // setListingData(mockData.data.getListings)
   }, [])
 
   const getDropdownValues = (veggies) => {
