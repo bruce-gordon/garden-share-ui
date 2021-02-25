@@ -15,12 +15,20 @@ const Profile = () => {
     }
   }
 
+  const highlightMyListings = () => {
+    return view ? 'button-selected' : 'profile-button'
+  }
+
+  const highlightMyOffers = () => {
+    return !view ? 'button-selected' : 'profile-button'
+  }
+
   return (
     <div className='profile-page'>
       <h2 className='user-name'>User Name</h2>
       <div className='button-container'>
-        <button className='profile-button' onClick={ handleClick }>My Listings</button>
-        <button className='profile-button' onClick={ handleClick }>My Offers</button>
+        <button className={ highlightMyListings() } onClick={ handleClick }>My Listings</button>
+        <button className={ highlightMyOffers() } onClick={ handleClick }>My Offers</button>
       </div>
       <div>
         { view && <MyListings /> }

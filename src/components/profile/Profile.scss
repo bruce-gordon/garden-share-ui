@@ -5,14 +5,25 @@
   padding: 1em;
 }
 
-.profile-button {
-  @include button(rgb(26,100,25));
+.button-selected {
+  @include button(#c1997b);
   margin: 1em;
   &:hover {
-    @include button-hover(#4e724e);
+    @include button-hover(#c1997b);
   }
   &:active {
-    @include button-active(#778e77);
+    @include button-active(#ddbca3);
+  }
+}
+
+.profile-button {
+  @include button(#8F7068);
+  margin: 1em;
+  &:hover {
+    @include button-hover(#c1997b);
+  }
+  &:active {
+    @include button-active(#ddbca3);
   }
 }
 
@@ -22,6 +33,6 @@
 }
 
 .user-name {
-  margin-bottom: 0;
+  margin: .5em 0;
   text-align: center;
 }
