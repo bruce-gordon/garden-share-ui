@@ -1,0 +1,9 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.my-listings {
+  padding: 1em;
+  border: 2px solid green;
+  margin-bottom: 1em;
+  background: $gray;
+}
