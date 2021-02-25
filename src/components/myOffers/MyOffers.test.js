@@ -17,6 +17,5 @@ describe('MyOffers', () => {
     const offer = screen.getByText('offer text')
     expect(listing).toBeInTheDocument()
     expect(offer).toBeInTheDocument()
-
   })
 })
