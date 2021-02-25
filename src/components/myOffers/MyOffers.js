@@ -11,8 +11,6 @@ const MyOffers = ({ userListings }) => {
 
   useEffect(() => {
     dispatch(updateUserOffers("userId", mockUserOffers.data.getUserOffers.listings))
-    // console.log(myOffers)
-    // console.log('filtered offers', filterOffers(myOffers, 'pending'))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -67,9 +65,9 @@ const MyOffers = ({ userListings }) => {
           { openListings }
         </div>
       </div>
-      <div>
+      <div className='my-listings'>
         <h3>My Accepted Offers</h3>
-        <div className='my-listings'>
+        <div>
           { acceptedListings }
         </div>
       </div>
