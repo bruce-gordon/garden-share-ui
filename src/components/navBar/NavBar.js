@@ -2,6 +2,8 @@ import React from 'react';
 import './NavBar.scss';
 import { Link } from 'react-router-dom';
 import GardenShareLogo from '../../images/GardenShareLogo.png';
+import Logout from '../logout/Logout.js'
+
 const NavBar = () => {
 
   return(
@@ -12,7 +14,7 @@ const NavBar = () => {
         <Link to='/create-new-listing' className='link'>Create New Listing</Link>
         <Link to='/about' className='link'>About</Link>
       </div>
-      <Link to='/login' className='logOut'>Log Out</Link>
+      <Logout />
     </nav>
   )
 }

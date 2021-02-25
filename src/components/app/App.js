@@ -8,6 +8,7 @@ import HomePage from '../homePage/HomePage.js'
 import ProductPage from '../productPage/ProductPage.js'
 import NewListingPage from '../newListingPage/NewListingPage.js'
 import Profile from '../profile/Profile.js'
+import UserInfo from '../userInfo/UserInfo.js'
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route path={'/profile'}>
           <Profile />
+        </Route>
+        <Route path='/about'>
+          <UserInfo />
         </Route>
       </Switch>
     </main>

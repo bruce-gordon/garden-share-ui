@@ -18,3 +18,9 @@ export const updateUserListings = (userId, data) => ({
   type: 'SET_USER_LISTINGS',
   data
 })
+
+export const loginUser = (user, isAuthenticated) => ({
+  type: 'LOGIN_USER',
+  user,
+  isAuthenticated
+})

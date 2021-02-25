@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import mockData from '../../mockData/mockData.js'
 import ProductCard from '../productCard/ProductCard.js'
-import { updateListingData } from '../../redux/actions/actions.js'
+import { updateListingData, loginUser } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
 
-const HomePage = ({ listingData }) => {
+const HomePage = ({ listingData, gardener }) => {
   // const [listingData, setListingData] = useState([])
   // const [sortedListings, setSortedListings] = useState([])
   const [selectedValue, setSelectedValue] = useState('')
+  const { user, isAuthenticated, isLoading } = useAuth0();
 
   const dispatch = useDispatch()
 
   useEffect(() => {
+    if (!gardener.isAuthenticated) {
+      dispatch(loginUser(user, isAuthenticated))
+    }
     dispatch(updateListingData(mockData.data.getListings))
-    // setListingData(mockData.data.getListings)
+    console.log('user', user, isAuthenticated, isLoading)
   }, [])
 
   const getDropdownValues = (veggies) => {
@@ -85,12 +90,14 @@ const HomePage = ({ listingData }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateListingData: text => dispatch(updateListingData(text))
+  loginUser: (user, isAuthenticated) => dispatch(loginUser(user, isAuthenticated)),
+  updateListingData: text => dispatch(updateListingData(text)),
 })
 
 function homePageState(state) {
   return {
-    listingData: state.allListings.listingData
+    listingData: state.allListings.listingData,
+    gardener: state.user
   }
 }
 
