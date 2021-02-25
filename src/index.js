@@ -12,7 +12,7 @@ ReactDOM.render(
   <Auth0Provider 
     domain='dev-wbsuhtm2.us.auth0.com'
     clientId='RuU4p6SrqA2mOiAtzGVQ3QDtCGaS0iKP'
-    redirectUri='http://localhost:3000/about'
+    redirectUri='http://localhost:3000/homepage'
   >
     <BrowserRouter>
       <Provider store={ store }>

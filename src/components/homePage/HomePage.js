@@ -14,11 +14,11 @@ const HomePage = ({ listingData, gardener }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!gardener.isAuthenticated) {
-      dispatch(loginUser(user, isAuthenticated))
-    }
+    // if (!isAuthenticated) {
+    //   dispatch(loginUser(user, isAuthenticated))
+    // }
     dispatch(updateListingData(mockData.data.getListings))
-    console.log('user', user, isAuthenticated, isLoading)
+    console.log('the user information', user, isAuthenticated, isLoading)
   }, [])
 
   const getDropdownValues = (veggies) => {
@@ -71,7 +71,12 @@ const HomePage = ({ listingData, gardener }) => {
     setSelectedValue(e.target.value)
   }
 
+  // if (!isLoading) { 
+  //   dispatch(loginUser(user, isAuthenticated))
+  // }
+
   return (
+    
     <div>
       <h2>Available Produce In Your Area</h2>
       <label htmlFor='productTypes'>Vegetable Types
