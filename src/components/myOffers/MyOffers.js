@@ -6,9 +6,9 @@ import mockUserOffers from '../../mockData/mockUserOffer.js'
 
 
 const MyOffers = ({ userListings }) => {
-  
+
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     dispatch(updateUserOffers("userId", mockUserOffers.data.getUserOffers.listings))
     // console.log(myOffers)
@@ -26,7 +26,7 @@ const MyOffers = ({ userListings }) => {
   const openListings = filterListings(userListings, 'open').map(listing => {
     console.log(listing)
     return (
-      <UserOffer 
+      <UserOffer
         id={ listing.id }
         key={ listing.id }
         updatedAt={ listing.updatedAt }
@@ -44,7 +44,7 @@ const MyOffers = ({ userListings }) => {
   const acceptedListings = filterListings(userListings, 'accepted').map(listing => {
     console.log(listing)
     return (
-      <UserOffer 
+      <UserOffer
         id={ listing.id }
         key={ listing.id }
         updatedAt={ listing.updatedAt }
@@ -61,7 +61,7 @@ const MyOffers = ({ userListings }) => {
 
   return (
     <div>
-      <div style={{border: '5px solid black'}}>
+      <div className='my-listings'>
         <h3>My Open Offers</h3>
         <div>
           { openListings }
@@ -69,7 +69,7 @@ const MyOffers = ({ userListings }) => {
       </div>
       <div>
         <h3>My Accepted Offers</h3>
-        <div style={{border: '5px solid purple'}}>
+        <div className='my-listings'>
           { acceptedListings }
         </div>
       </div>
