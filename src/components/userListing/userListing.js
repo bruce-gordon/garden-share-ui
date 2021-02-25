@@ -1,5 +1,5 @@
 import React from 'react';
-import './UserListing.scss';
+import './userListing.scss';
 
 const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units, offers, status }) => {
 
