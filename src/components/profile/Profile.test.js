@@ -1,12 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import Profile from './Profile';
 import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
 
-test.skip('renders learn react link', () => {
-  render(
-    <MemoryRouter>
-      <Profile />
-    </MemoryRouter>
-  );
+describe('Profile', () => {
+  beforeEach(() => {
+    render(
+      <MemoryRouter>
+        <Profile />
+      </MemoryRouter>
+    )
+  })
 
-});
+  it.skip('should render user info', () => {
+    const userInfo = screen.getByText('user info text')
+    expect(userInfo).toBeInTheDocument()
+  })
+})
