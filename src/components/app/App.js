@@ -16,7 +16,7 @@ const App = () => {
   const { isLoading } = useAuth0();
 
   if (isLoading) {
-    return <div>The page is loadings.  Just a moment.</div>
+    return <div>The page is loading.  Just a moment.</div>
   }
 
   if (!isLoading) {
