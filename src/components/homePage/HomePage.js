@@ -6,8 +6,7 @@ import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 
 const HomePage = ({ listingData, gardener }) => {
-  // const [listingData, setListingData] = useState([])
-  // const [sortedListings, setSortedListings] = useState([])
+
   const [selectedValue, setSelectedValue] = useState('')
   const { user, isAuthenticated, isLoading } = useAuth0();
 
@@ -71,12 +70,12 @@ const HomePage = ({ listingData, gardener }) => {
     setSelectedValue(e.target.value)
   }
 
-  // if (!isLoading) { 
+  // if (!isLoading) {
   //   dispatch(loginUser(user, isAuthenticated))
   // }
 
   return (
-    
+
     <div>
       <h2>Available Produce In Your Area</h2>
       <label htmlFor='productTypes'>Vegetable Types

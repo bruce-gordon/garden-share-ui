@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import UserListing from '../userListing/userListing.js'
+import UserListing from '../userListing/UserListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
 
 const MyListings = ({ myListings }) => {
-  
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const MyListings = ({ myListings }) => {
 
   const openListings = filterListings(myListings, 'open').map(listing => {
     return (
-      <UserListing 
+      <UserListing
         id={ listing.id }
         key={ listing.id }
         updatedAt={ listing.updatedAt }
@@ -38,7 +38,7 @@ const MyListings = ({ myListings }) => {
 
   const acceptedListings = filterListings(myListings, 'accepted').map(listing => {
     return (
-      <UserListing 
+      <UserListing
         id={ listing.id }
         key={ listing.id }
         updatedAt={ listing.updatedAt }

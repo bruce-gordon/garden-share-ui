@@ -9,8 +9,16 @@ import ProductPage from '../productPage/ProductPage.js'
 import NewListingPage from '../newListingPage/NewListingPage.js'
 import Profile from '../profile/Profile.js'
 import UserInfo from '../userInfo/UserInfo.js'
+import { useAuth0 } from '@auth0/auth0-react'
+import './App.scss'
 
-function App() {
+const App = () => {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <div>The page is loadings.  Just a moment.</div>
+  }
+
   return (
     <main>
       <div className="App">
