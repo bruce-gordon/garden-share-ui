@@ -19,44 +19,46 @@ const App = () => {
     return <div>The page is loadings.  Just a moment.</div>
   }
 
-  return (
-    <main>
-      <div className="App">
-        <NavBar />
-      </div>
-      <Switch>
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='/sign-up'>
-          <SignUp />
-        </Route>
-        <Route path='/homepage'>
-          <HomePage />
-        </Route>
-        <Route
-          path={'/listing/:id'}
-          render={({match}) => {
-            return (
-              <ProductPage
-                id={ `${match.params.id}` }
-                key={ `${match.params.id}` }
-              />
-            )
-          }}>
-        </Route>
-        <Route path='/create-new-listing'>
-          <NewListingPage />
-        </Route>
-        <Route path={'/profile'}>
-          <Profile />
-        </Route>
-        <Route path='/about'>
-          <UserInfo />
-        </Route>
-      </Switch>
-    </main>
-  );
+  if (!isLoading) {
+    return (
+      <main>
+        <div className="App">
+          <NavBar />
+        </div>
+        <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/sign-up'>
+            <SignUp />
+          </Route>
+          <Route path='/homepage'>
+            <HomePage />
+          </Route>
+          <Route
+            path={'/listing/:id'}
+            render={({match}) => {
+              return (
+                <ProductPage
+                  id={ `${match.params.id}` }
+                  key={ `${match.params.id}` }
+                />
+              )
+            }}>
+          </Route>
+          <Route path='/create-new-listing'>
+            <NewListingPage />
+          </Route>
+          <Route path={'/profile'}>
+            <Profile />
+          </Route>
+          <Route path='/about'>
+            <UserInfo />
+          </Route>
+        </Switch>
+      </main>
+    );
+  }
 }
 
 export default App;

@@ -13,9 +13,7 @@ const HomePage = ({ listingData, gardener }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // if (!isAuthenticated) {
-    //   dispatch(loginUser(user, isAuthenticated))
-    // }
+    dispatch(loginUser(user, isAuthenticated))
     dispatch(updateListingData(mockData.data.getListings))
     console.log('the user information', user, isAuthenticated, isLoading)
   }, [])
