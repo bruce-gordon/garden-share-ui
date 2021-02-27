@@ -1,0 +1,81 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.listing-section {
+  border: 2px solid black;
+  padding: 1em;
+  background: $white;
+}
+
+.user-listing {
+  padding: .5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: $lightGreen;
+  margin: .5em 0;
+}
+
+.listing-offer {
+  border-top: 2px solid green;
+  border-bottom: 2px solid green;
+  padding: .5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: $white;
+  width: 90%;
+  margin: .5em;
+}
+
+.listing-offer-section {
+  display: flex;
+  justify-content: center;
+  background: $white;
+  border-radius: 25px;
+  overflow: scroll;
+}
+
+.offer-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.offer-contact-info {
+text-align: center;
+}
+
+.accept {
+  @include button($green);
+}
+
+.decline {
+  @include button($red);
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.sub-section {
+  @include subSection();
+}
+
+.contact-info {
+  @include subSection();
+  background: $navBarGreen;
+  color: $white;
+  padding: 0 1em;
+}
+
+.sub-heading {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+.email {
+  margin-top: 0;
+}

@@ -9,7 +9,7 @@ const NavBar = () => {
   return(
     <nav className="navBar">
       <div className="navOptions"> 
-        <Link to='/homepage' className='logoLink'><img src={GardenShareLogo} className='logo' /></Link> 
+        <Link to='/homepage' className='logoLink' data-testid='gardenShareLogo'><img src={GardenShareLogo} className='logo' /></Link> 
         <Link to='/profile' className='link'>Profile</Link>
         <Link to='/create-new-listing' className='link'>Create New Listing</Link>
         <Link to='/about' className='link'>About</Link>

@@ -1,0 +1,38 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.profile-page {
+  padding: 1em;
+}
+
+.button-selected {
+  @include button(#c1997b);
+  margin: 1em;
+  &:hover {
+    @include button-hover(#c1997b);
+  }
+  &:active {
+    @include button-active(#ddbca3);
+  }
+}
+
+.profile-button {
+  @include button(#8F7068);
+  margin: 1em;
+  &:hover {
+    @include button-hover(#c1997b);
+  }
+  &:active {
+    @include button-active(#ddbca3);
+  }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.user-name {
+  margin: .5em 0;
+  text-align: center;
+}

@@ -58,7 +58,7 @@ const HomePage = ({ listingData, gardener }) => {
   const dropdownOptions = getDropdownValues(produceData).map((listing, index) => {
     console.log('puppy', listing)
     return (
-      <option key={index} value={listing}>
+      <option key={index} value={listing} data-testid={listing}>
         { capitalizeLetter(listing) }
       </option>
     )
@@ -87,7 +87,7 @@ const HomePage = ({ listingData, gardener }) => {
     <div>
       <h2>Available Produce In Your Area</h2>
       <label htmlFor='productTypes'>Vegetable Types
-        <select id='productTypes' value={ selectedValue } onChange={ handleChange }>
+        <select id='productTypes' value={selectedValue} data-testid='veggieTypesDropdown' onChange={ handleChange }>
           <option value=''>
             All Listings
           </option>

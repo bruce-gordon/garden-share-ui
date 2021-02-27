@@ -3,6 +3,7 @@ import UserListing from '../userListing/UserListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
+import './MyListings.scss'
 
 const MyListings = ({ myListings }) => {
 
@@ -53,15 +54,15 @@ const MyListings = ({ myListings }) => {
   })
   return (
     <div>
-      <div style={{border: '5px solid black'}}>
+      <div className='my-listings'>
         <h3>My Open Listings</h3>
-        <div style={{border: '5px solid pink'}}>
+        <div>
           { openListings }
         </div>
       </div>
-      <div>
+      <div className='my-listings'>
         <h3>My Accepted Listings</h3>
-        <div style={{border: '5px solid purple'}}>
+        <div>
           { acceptedListings }
         </div>
       </div>
