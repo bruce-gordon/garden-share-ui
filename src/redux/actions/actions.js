@@ -87,8 +87,37 @@ export const updateUserListings = (userId, data) => ({
   data
 })
 
-export const loginUser = (user, isAuthenticated) => ({
-  type: 'LOGIN_USER',
-  user,
-  isAuthenticated
-})
+export const loginUser = (user, isAuthenticated) => {
+  return dispatch => {
+    const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
+    axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
+    method: 'post',
+    data: {
+      query: `
+      mutation {
+        createUser (input: {firstName: "${user.given_name}", lastName: "${user.family_name}", email: "${user.email} "}) {
+          user {
+            id
+            firstName
+            lastName
+            email
+          }
+        error
+      }
+    }`
+    }})
+    .then(response => {
+      if (response.status === 200) {
+        console.log(response)
+        dispatch ({
+          type: 'LOGIN_USER',
+          user: response.data.data.createUser.user,
+          isAuthenticated: isAuthenticated,
+          error: response.data.data.createUser.error
+        })
+      } else {
+        console.error(response)
+      }
+    })
+  }
+}
