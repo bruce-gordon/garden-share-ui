@@ -9,7 +9,8 @@ const ProductPage = ({ id, product }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(updateProductPageData(id, mockListing.data.showListing.listing))
+    const parsedId = parseInt(id)
+    dispatch(updateProductPageData(parsedId))
   }, [])
 
   const capitalizeLetter = (word) => {
@@ -17,7 +18,6 @@ const ProductPage = ({ id, product }) => {
   }
 
   const makeOffer = ( data) => {
-    console.log('data', data)
     dispatch(updateUserOffers(id, data))
   }
 
