@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 export default function ProductCard({ id, produceName, type, quantity, unit, zipCode }) {
 
   return (
-    <div className='productCard' data-testId='productCard'>
+    <div className='productCard' data-testid='productCard'>
       <Link to={`/listing/${id}`}>
         <h3 className='cardHeader'>{ produceName }</h3>
         <p>Type: <i>{ type }</i></p>

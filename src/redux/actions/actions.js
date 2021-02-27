@@ -14,7 +14,6 @@ export const updateListingData = () => {
       fields: ['listings', 'error']
     }))
     .then(response => {
-      console.log(response)
       if (response.status === 200) {
         dispatch({
           type: 'SET_LISTING_DATA',
