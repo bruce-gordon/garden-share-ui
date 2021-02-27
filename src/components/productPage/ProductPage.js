@@ -9,7 +9,6 @@ const ProductPage = ({ id, product }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    console.log('chicken feet', mockListing.data.showListing.listing)
     dispatch(updateProductPageData(id, mockListing.data.showListing.listing))
   }, [])
 

@@ -6,13 +6,20 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './components/app/App.js';
 import reportWebVitals from './reportWebVitals';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={ store }>
-        <App />
-    </Provider>
-  </BrowserRouter>,
+  <Auth0Provider 
+    domain='dev-wbsuhtm2.us.auth0.com'
+    clientId='RuU4p6SrqA2mOiAtzGVQ3QDtCGaS0iKP'
+    redirectUri='http://localhost:3000/homepage'
+  >
+    <BrowserRouter>
+      <Provider store={ store }>
+          <App />
+      </Provider>
+    </BrowserRouter>
+  </Auth0Provider>,
   document.getElementById('root')
 );
 

@@ -1,13 +1,14 @@
 const allListingsInitialState = {
-  listingData: []
+  listingData: [],
+  error: null
 }
 
 const allListings = (state = allListingsInitialState, action) => {
   switch (action.type) {
     case 'SET_LISTING_DATA':
       return {
-        ...state,
-        listingData: action.data
+        listingData: action.data,
+        error: action.error
       }
 
     default:
