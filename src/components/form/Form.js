@@ -28,8 +28,8 @@ const Form = ({ submitFunc }) => {
   }
 
   return (
-    <div className='form'>
-      <form className='form items'>
+    <div>
+      <form className='form-items'>
         <select className='form-space' name='itemName' onChange={ handleChange } >
           <option value=''>
             Select Item
@@ -43,7 +43,7 @@ const Form = ({ submitFunc }) => {
         <input className='form-space' type='number' placeholder='Quantity' value={ state.quantity } name='quantity' onChange={ handleChange } />
         <input className='form-space' type='text' placeholder='unit (ex: lbs)' value={ state.unit } name='unit' onChange={ handleChange } />
         <input className='form-space' type='date' placeholder='Date Harvested' value={ state.date } name='date' onChange={ handleChange } />
-        <button onClick={ handleSubmit }>Submit</button>
+        <button className='submit-button' onClick={ handleSubmit }>Submit</button>
       </form>
     </div>
   )
