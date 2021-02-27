@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import UserListing from '../userListing/userListing.js'
+import UserListing from '../userListing/UserListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
+import './MyListings.scss'
 
 const MyListings = ({ myListings }) => {
-  
+
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const MyListings = ({ myListings }) => {
 
   const openListings = filterListings(myListings, 'open').map(listing => {
     return (
-      <UserListing 
+      <UserListing
         id={ listing.id }
         key={ listing.id }
         updatedAt={ listing.updatedAt }
@@ -38,7 +39,7 @@ const MyListings = ({ myListings }) => {
 
   const acceptedListings = filterListings(myListings, 'accepted').map(listing => {
     return (
-      <UserListing 
+      <UserListing
         id={ listing.id }
         key={ listing.id }
         updatedAt={ listing.updatedAt }
@@ -53,15 +54,15 @@ const MyListings = ({ myListings }) => {
   })
   return (
     <div>
-      <div style={{border: '5px solid black'}}>
+      <div className='my-listings'>
         <h3>My Open Listings</h3>
-        <div style={{border: '5px solid pink'}}>
+        <div>
           { openListings }
         </div>
       </div>
-      <div>
+      <div className='my-listings'>
         <h3>My Accepted Listings</h3>
-        <div style={{border: '5px solid purple'}}>
+        <div>
           { acceptedListings }
         </div>
       </div>
