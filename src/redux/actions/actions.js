@@ -1,11 +1,6 @@
 import axios from 'axios'
 import { query } from 'gql-query-builder'
 
-// export const updateListingData = (data) => ({
-//   type: 'SET_LISTING_DATA',
-//   data
-// })
-
 export const updateListingData = () => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
@@ -109,10 +104,59 @@ export const createOffer = (listingId, userId, offer) => {
   }
 }
 
-export const updateUserOffers = (userId, data) => ({
-  type: 'SET_USER_OFFERS',
-  data
-})
+export const updateUserOffers = (userId) => {
+  return dispatch => {
+    const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
+    axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
+    method: 'post',
+    data: {
+      query: `
+      query {
+        getUserOffers(id: ${userId}) {
+          listings {
+            id
+            produceName
+            produceType
+            quantity
+            unit
+            status
+            dateHarvested
+            updatedAt
+            user {
+              id
+              firstName
+            }
+            offers {
+              id
+              produceName
+              produceType
+              quantity
+              unit
+              dateHarvested
+              updatedAt
+              user {
+                id
+                firstName
+              }
+            }
+          }
+          error
+        }
+      }`
+    }})
+    .then(response => {
+      if (response.status === 200) {
+        dispatch ({
+          type: 'SET_USER_OFFERS',
+          data: response.data.data.getUserOffers.listings,
+          error: response.data.data.getUserOffers.error
+        })
+      } else {
+        console.error(response)
+      }
+    })
+  }
+}
 
 export const updateUserListings = (userId, data) => ({
   type: 'SET_USER_LISTINGS',
