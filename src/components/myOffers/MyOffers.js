@@ -5,12 +5,12 @@ import { updateUserOffers } from '../../redux/actions/actions.js';
 import mockUserOffers from '../../mockData/mockUserOffer.js'
 
 
-const MyOffers = ({ userListings }) => {
+const MyOffers = ({ userListings, theUser }) => {
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(updateUserOffers("userId", mockUserOffers.data.getUserOffers.listings))
+    dispatch(updateUserOffers(theUser.id))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -21,12 +21,11 @@ const MyOffers = ({ userListings }) => {
     })
   }
 
-  const openListings = filterListings(userListings, 'open').map(listing => {
-    console.log(listing)
+  const openListings = filterListings(userListings, 'pending').map((listing, index) => {
     return (
       <UserOffer
         id={ listing.id }
-        key={ listing.id }
+        key={ listing.id + index }
         updatedAt={ listing.updatedAt }
         produceType={ listing.produceType }
         produceName={ listing.produceName }
@@ -39,12 +38,12 @@ const MyOffers = ({ userListings }) => {
     )
   })
 
-  const acceptedListings = filterListings(userListings, 'accepted').map(listing => {
+  const acceptedListings = filterListings(userListings, 'accepted').map((listing, index) => {
     console.log(listing)
     return (
       <UserOffer
         id={ listing.id }
-        key={ listing.id }
+        key={ listing.id + index }
         updatedAt={ listing.updatedAt }
         produceType={ listing.produceType }
         produceName={ listing.produceName }
@@ -56,7 +55,6 @@ const MyOffers = ({ userListings }) => {
       />
     )
   })
-
   return (
     <div>
       <div className='my-listings'>
@@ -81,7 +79,8 @@ const mapDispatchToProps = dispatch => ({
 
 function myOffersState(state) {
   return {
-    userListings: state.userOffers.offersList
+    userListings: state.userOffers.offersList,
+    theUser: state.user.user
   }
 }
 

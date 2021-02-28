@@ -5,6 +5,11 @@
   border: 2px solid black;
   padding: 1em;
   background: $white;
+  margin-bottom: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-listing {
@@ -14,6 +19,7 @@
   justify-content: space-around;
   background: $lightGreen;
   margin: .5em 0;
+  width: 95%;
 }
 
 .listing-offer {
@@ -24,16 +30,21 @@
   flex-direction: row;
   justify-content: space-around;
   background: $white;
-  width: 90%;
+  width: 100%;
   margin: .5em;
+}
+
+section {
+  width: 100%;
 }
 
 .listing-offer-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background: $white;
-  border-radius: 25px;
-  overflow: scroll;
+  width: 90%;
 }
 
 .offer-options {
@@ -44,7 +55,7 @@
 }
 
 .offer-contact-info {
-text-align: center;
+  text-align: center;
 }
 
 .accept {
@@ -57,7 +68,9 @@ text-align: center;
 
 .section-heading {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 1em;
+  border-bottom: 1px solid $navBarGreen;
+
 }
 
 .sub-section {
@@ -69,6 +82,10 @@ text-align: center;
   background: $navBarGreen;
   color: $white;
   padding: 0 1em;
+}
+
+.offer-value {
+  text-align: center;
 }
 
 .sub-heading {
