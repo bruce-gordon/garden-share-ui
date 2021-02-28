@@ -1,14 +1,14 @@
 const userListingsInitialState = {
   listings: [],
-  error: ''
+  error: []
 }
 
 const userListings = (state = userListingsInitialState, action) => {
   switch (action.type) {
-    case 'SET_USER_LISTINGS':
+    case 'CREATE_LISTING':
       return {
-        ...state,
         listings: action.data,
+        error: action.error
       }
 
     case 'SET_ERROR':

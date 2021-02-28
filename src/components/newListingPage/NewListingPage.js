@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import './NewListingPage.scss';
 import Form from '../form/Form.js';
+import { connect, useDispatch } from 'react-redux'
+import { createListing } from '../../redux/actions/actions.js'
 
-const NewListingPage = () => {
+
+const NewListingPage = ({ user }) => {
 
   const [newListings, setNewListings] = useState([])
+  const dispatch = useDispatch()
 
   const makeListing = (data) => {
-    setNewListings([...newListings, data])
+    const formattedListing = {
+      itemName: data.itemName,
+      itemType: data.itemType,
+      description: data.description,
+      quantity: parseInt(data.quantity),
+      unit: data.unit,
+      date: data.date
+    }
+    console.log('formatted listing', formattedListing)
+    dispatch(createListing(user.id, formattedListing))
+    setNewListings([...newListings, formattedListing])
     // console.log('data', data)
     // dispatch(updateUserOffers(data))
   }
@@ -37,5 +51,15 @@ const NewListingPage = () => {
   )
 }
 
+const mapDispatchToProps = dispatch => ({
+  createListing: (userId, listing) => dispatch(createListing(userId, listing))
+})
 
-export default NewListingPage;
+function newListingPageState(state) {
+  return {
+    user: state.user.user
+  }
+}
+
+
+export default connect(newListingPageState, mapDispatchToProps)(NewListingPage);
