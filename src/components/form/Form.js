@@ -10,12 +10,12 @@ const Form = ({ submitFunc }) => {
   // const [units, setUnits] = useState('')
   // const [date, setDate] = useState('')
   const [state, setState] = useState({
-    itemName: '', 
-    itemType: '', 
-    description: '', 
-    quantity: '', 
-    unit: '', 
-    date: '' 
+    itemName: '',
+    itemType: '',
+    description: '',
+    quantity: '',
+    unit: '',
+    date: ''
   })
 
   const handleSubmit = (e) => {
@@ -28,7 +28,7 @@ const Form = ({ submitFunc }) => {
   }
 
   return (
-    <div>
+    <div className='form'>
       <form className='form-items'>
         <select className='form-space' name='itemName' onChange={ handleChange } >
           <option value=''>

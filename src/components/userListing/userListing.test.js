@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import UserListing from './userListing';
+import UserListing from './UserListing';
 import '@testing-library/jest-dom';
 
 describe('UserListing', () => {
@@ -16,4 +16,3 @@ describe('UserListing', () => {
     expect(userListing).toBeInTheDocument()
   })
 })
-

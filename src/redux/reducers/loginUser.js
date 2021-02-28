@@ -1,16 +1,18 @@
 const userInitialState = {
   user: {},
-  isAuthenticated: false
+  isAuthenticated: false,
+  error: []
 }
 
 const user = (state = userInitialState, action) => {
   switch (action.type) {
     case 'LOGIN_USER':
       return {
-        ...state,
         user: action.user,
-        isAuthenticated: action.isAuthenticated
+        isAuthenticated: action.isAuthenticated,
+        error: action.error
       }
+
     default:
       return state
   }

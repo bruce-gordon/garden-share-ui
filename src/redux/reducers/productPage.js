@@ -1,12 +1,14 @@
 const productPageInitialState = {
-  productPageData: {}
+  productPageData: {},
+  error: []
 }
 
 const productPage = (state = productPageInitialState, action) => {
   switch (action.type) {
     case 'SET_PRODUCT_LISTING':
       return {
-        productPageData: action.data
+        productPageData: action.data,
+        error: action.error
       }
 
     default:

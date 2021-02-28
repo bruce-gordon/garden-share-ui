@@ -8,7 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 const HomePage = ({ listingData, gardener }) => {
 
   const [selectedValue, setSelectedValue] = useState('')
-  const [produceData, setProduceData] = useState([])
+  // const [produceData, setProduceData] = useState([])
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   const dispatch = useDispatch()
@@ -16,26 +16,11 @@ const HomePage = ({ listingData, gardener }) => {
   useEffect(() => {
     dispatch(loginUser(user, isAuthenticated))
     dispatch(updateListingData())
-    setProduceData(combineData(listingData))
-    console.log(produceData)
+    // setProduceData(combineData(listingData))
   }, [])
 
-  const getDropdownValues = (veggies) => {
-    return veggies.reduce((total, veggie) => {
-      if (!total.includes(veggie.produce_name)) {
-        total.push(veggie.produce_name)
-      }
-      return total
-      }, [])
-  }
-
-
-  const capitalizeLetter = (word) => {
-    return word.charAt(0).toUpperCase() + word.slice(1)
-  }
-
   const combineData = (dataObject) => {
-    const dataKeys = Object.keys(listingData);
+    const dataKeys = Object.keys(dataObject);
     return dataKeys.reduce((final, key) => {
       dataObject[key].forEach(item => {
         final.push(item)
@@ -43,6 +28,23 @@ const HomePage = ({ listingData, gardener }) => {
       return final
     }, [])
   }
+
+  const produceData = combineData(listingData)
+
+  const getDropdownValues = (veggies) => {
+    return veggies.reduce((total, veggie) => {
+      if (!total.includes(veggie.produce_name)) {
+        total.push(veggie.produce_name)
+      }
+      return total
+    }, [])
+  }
+
+  const capitalizeLetter = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  }
+
+
 
   const filterByOption = () => {
     let dropdown = document.getElementById('productTypes')
@@ -56,7 +58,6 @@ const HomePage = ({ listingData, gardener }) => {
   }
 
   const dropdownOptions = getDropdownValues(produceData).map((listing, index) => {
-    console.log('puppy', listing)
     return (
       <option key={index} value={listing} data-testid={listing}>
         { capitalizeLetter(listing) }
@@ -65,7 +66,6 @@ const HomePage = ({ listingData, gardener }) => {
   })
 
   const filteredProducts = filterByOption().map(listing => {
-    console.log('cat', listing)
     return (
       <ProductCard
         key={listing.id}
@@ -83,22 +83,26 @@ const HomePage = ({ listingData, gardener }) => {
     setSelectedValue(e.target.value)
   }
 
-  return (
-    <div>
-      <h2>Available Produce In Your Area</h2>
-      <label htmlFor='productTypes'>Vegetable Types
-        <select id='productTypes' value={selectedValue} data-testid='veggieTypesDropdown' onChange={ handleChange }>
-          <option value=''>
-            All Listings
-          </option>
-          { dropdownOptions }
-        </select>
-      </label>
+  if (produceData.length) {
+    return (
       <div>
+        <h2>Available Produce In Your Area</h2>
+        <label htmlFor='productTypes'>Vegetable Types
+        <select id='productTypes' value={selectedValue} data-testid='veggieTypesDropdown' onChange={ handleChange }>
+        <option value=''>
+        All Listings
+        </option>
+        { dropdownOptions }
+        </select>
+        </label>
+        <div>
         { filteredProducts }
+        </div>
       </div>
-    </div>
-  )
+    )
+  } else {
+    return (<h1>Loading...</h1>)
+  }
 }
 
 const mapDispatchToProps = dispatch => ({
