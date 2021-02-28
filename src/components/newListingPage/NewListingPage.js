@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import Form from '../form/Form.js'
+import React, { useState } from 'react';
+import './NewListingPage.scss';
+import Form from '../form/Form.js';
 
 const NewListingPage = () => {
 
@@ -13,7 +14,7 @@ const NewListingPage = () => {
 
   const userListings = newListings.map(listing => {
     return(
-      <div>
+      <div className='new-listing-card'>
         <h3 className='cardHeader'>{ listing.itemName }</h3>
         <p>Type: <i>{ listing.itemType }</i></p>
         <p>{ listing.quantity } { listing.unit }</p>
@@ -23,12 +24,12 @@ const NewListingPage = () => {
   })
 
   return (
-    <div>
-      <h2>List What You are Offering</h2>
-      { userListings.length >= 1 && <h3>Your New Listings</h3>}
-      <div>
+    <div className='new-listing-page'>
+      { userListings.length >= 1 && <h2>Your New Listings</h2>}
+      <div className='new-listings-container'>
         { userListings }
       </div>
+      <h2>Create New Listing Here</h2>
       <Form
         submitFunc={ makeListing }
       />
