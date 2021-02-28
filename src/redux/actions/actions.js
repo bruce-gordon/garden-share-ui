@@ -85,12 +85,9 @@ export const createOffer = (listingId, userId, offer) => {
           unit: "${offer.unit}",
           dateHarvested: "${offer.date}"}) {
             offer {
+              id
               produceName
               produceType
-              description
-              quantity
-              unit
-              dateHarvested
             }
             error
           }
@@ -102,6 +99,8 @@ export const createOffer = (listingId, userId, offer) => {
         dispatch ({
           type: 'CREATE_OFFER',
           offerId: response.data.data.createOffer.offer.id,
+          name: response.data.data.createOffer.offer.produceName,
+          produceType: response.data.data.createOffer.offer.produceType,
           error: response.data.data.createOffer.error
         })
       } else {

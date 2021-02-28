@@ -21,7 +21,6 @@ const HomePage = ({ listingData, gardener }) => {
 
   const combineData = (dataObject) => {
     const dataKeys = Object.keys(dataObject);
-    console.log(dataObject)
     return dataKeys.reduce((final, key) => {
       dataObject[key].forEach(item => {
         final.push(item)
@@ -29,7 +28,7 @@ const HomePage = ({ listingData, gardener }) => {
       return final
     }, [])
   }
-  
+
   const produceData = combineData(listingData)
 
   const getDropdownValues = (veggies) => {
@@ -85,7 +84,6 @@ const HomePage = ({ listingData, gardener }) => {
   }
 
   if (produceData.length) {
-    console.log(listingData)
     return (
       <div>
         <h2>Available Produce In Your Area</h2>
