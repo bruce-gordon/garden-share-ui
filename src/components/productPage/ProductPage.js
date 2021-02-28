@@ -33,16 +33,23 @@ const ProductPage = ({ id, theUser, product }) => {
     dispatch(createOffer(parseInt(id), theUser.id, formattedOffer))
   }
 
+  const formatDate = (inputdate) => {
+    let date = new Date (inputdate);
+    if (!isNaN(date.getTime())) {
+      return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+     }
+  }
+
   if (product.produceType) {
     return (
       <div>
         <h2>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
         <div>
           <p>{ product.quantity } { product.unit }</p>
-          <p>{ product.description }</p>
-          <p><b>Grown by:</b> { product.user.firstName }</p>
-          <p>Harvested on: { product.dateHarvested }</p>
-          <p>Zip Code: { product.zipCode }</p>
+          <p>Description: <i>{ product.description }</i></p>
+          <p>Grown by: <i>{ product.user.firstName }</i></p>
+          <p>Harvested on: <i>{ formatDate(product.dateHarvested) }</i></p>
+          <p>Zip Code: <i>{ product.zipCode }</i></p>
         </div>
         <h3>Complete the form to make an Offer</h3>
         <Form

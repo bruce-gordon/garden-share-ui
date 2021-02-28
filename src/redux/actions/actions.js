@@ -95,7 +95,6 @@ export const createOffer = (listingId, userId, offer) => {
     }})
     .then(response => {
       if (response.status === 200) {
-        console.log(response)
         dispatch ({
           type: 'CREATE_OFFER',
           offerId: response.data.data.createOffer.offer.id,
