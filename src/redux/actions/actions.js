@@ -62,6 +62,53 @@ export const updateProductPageData = (id) => {
   }
 }
 
+export const createListing = (userId, listing) => {
+  return dispatch => {
+    const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
+    axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
+    method: 'post',
+    data: {
+      query: 
+        `mutation {
+          createListing(input: {
+          userId: ${userId},
+          zipCode: "80206",
+          produceName: "${listing.itemName}",
+          produceType: "${listing.itemType}",
+          description: "${listing.description}",
+          quantity: ${listing.quantity},
+          unit: "${listing.unit}",
+          dateHarvested: "${listing.date}"}) {
+            listing {
+              zipCode
+              produceName
+              produceType
+              description
+              quantity
+              unit
+              dateHarvested
+              createdAt
+            }
+            error
+          }
+        }`
+    }
+    })
+    .then(response => {
+      console.log('response', response)
+      if (response.status === 200) {
+        dispatch({
+          type: "CREATE_LISTING",
+          data: response.data.data.createListing.listing,
+          error: response.data.data.createListing.error
+        })
+      } else {
+        console.error(response)
+      }
+    })
+  }
+}
+
 export const createOffer = (listingId, userId, offer) => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
