@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+import './ProductPage.scss';
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
 import { updateProductPageData, createOffer } from '../../redux/actions/actions.js'
@@ -42,16 +43,17 @@ const ProductPage = ({ id, theUser, product }) => {
 
   if (product.produceType) {
     return (
-      <div>
-        <h2>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
-        <div>
-          <p>{ product.quantity } { product.unit }</p>
-          <p>Description: <i>{ product.description }</i></p>
-          <p>Grown by: <i>{ product.user.firstName }</i></p>
-          <p>Harvested on: <i>{ formatDate(product.dateHarvested) }</i></p>
-          <p>Zip Code: <i>{ product.zipCode }</i></p>
+      <div className='product-page'>
+        { console.log(product) }
+        <h2 className='product-header'>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
+        <div className='product-text-container'>
+          <p><b>Amount Available:</b> { product.quantity } { product.unit }</p>
+          <p><b>Description:</b> { product.description }</p>
+          <p><b>Grown by:</b> { product.user.firstName }</p>
+          <p><b>Harvested on:</b> { product.dateHarvested }</p>
+          <p><b>Zip Code:</b> { product.zipCode }</p>
         </div>
-        <h3>Complete the form to make an Offer</h3>
+        <h3>Complete This Form to Make an Offer</h3>
         <Form
           submitFunc={ makeOffer }
         />

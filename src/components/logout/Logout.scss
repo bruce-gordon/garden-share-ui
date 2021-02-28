@@ -1,0 +1,12 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.logout-button {
+  @include button(#aa4c21);
+  &:hover {
+    @include button-hover(#bd6c46);
+  }
+  &:active {
+    @include button-active(#d89d82);
+  }
+}

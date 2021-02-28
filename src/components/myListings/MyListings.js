@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import UserListing from '../userListing/UserListing.js'
+import UserListing from '../userListing/userListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';

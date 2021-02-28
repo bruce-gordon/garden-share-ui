@@ -1,0 +1,21 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.new-listing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-listings-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.new-listing-card {
+  padding: 1em;
+  border: 2px solid green;
+  margin: 1em;
+  background: $gray;
+}
