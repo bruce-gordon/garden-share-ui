@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
-import { updateProductPageData, updateUserOffers } from '../../redux/actions/actions.js'
+import { updateProductPageData, createOffer } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
+import { useAuth0 } from '@auth0/auth0-react'
 
-const ProductPage = ({ id, product }) => {
+const ProductPage = ({ id, theUser, product }) => {
+
+  const { user } = useAuth0();
 
   const dispatch = useDispatch()
 
@@ -17,19 +20,27 @@ const ProductPage = ({ id, product }) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  const makeOffer = ( data) => {
-    dispatch(updateUserOffers(id, data))
+  const makeOffer = (offer) => {
+    const formattedOffer = {
+      itemName: offer.itemName,
+      itemType: offer.itemType,
+      description: offer.description,
+      quantity: parseInt(offer.quantity),
+      unit: offer.unit,
+      date: offer.date
+    }
+    console.log(parseInt(id), theUser.id, formattedOffer)
+    dispatch(createOffer(parseInt(id), theUser.id, formattedOffer))
   }
 
   if (product.produceType) {
     return (
       <div>
-        { console.log(product) }
         <h2>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
         <div>
           <p>{ product.quantity } { product.unit }</p>
           <p>{ product.description }</p>
-          <p>Grown by: { product.user.firstName }</p>
+          <p><b>Grown by:</b> { product.user.firstName }</p>
           <p>Harvested on: { product.dateHarvested }</p>
           <p>Zip Code: { product.zipCode }</p>
         </div>
@@ -47,12 +58,13 @@ const ProductPage = ({ id, product }) => {
 
 const mapDispatchToProps = dispatch => ({
   updateProductPageData: text => dispatch(updateProductPageData(text)),
-  updateUserOffers: text => dispatch(updateUserOffers(text))
+  createOffer: text => dispatch(createOffer(text))
 })
 
 function productPageState(state) {
   return {
-    product: state.productPage.productPageData
+    product: state.productPage.productPageData,
+    theUser: state.user.user
   }
 }
 

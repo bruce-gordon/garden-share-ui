@@ -53,17 +53,8 @@ export const updateProductPageData = (id) => {
           error
         }}`
     }})
-    // const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
-    // return axios.post(`${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
-    //   query ({
-    //     operation: 'showListing',
-    //     variables: {id: id},
-    //     fields: ['listing { user {id, firstName, lastName, email }, produceName, produceType, description, quantity, unit, dateHarvested, zipCode, status, updatedAt }, error']
-    //   }))
       .then(response => {
-        console.log('id', id)
         if (response.status === 200) {
-          console.log(response)
           dispatch ({
             type: 'SET_PRODUCT_LISTING',
             data: response.data.data.showListing.listing,
@@ -76,7 +67,50 @@ export const updateProductPageData = (id) => {
   }
 }
 
-//data being used for mock data
+export const createOffer = (listingId, userId, offer) => {
+  return dispatch => {
+    const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
+    axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
+    method: 'post',
+    data: {
+      query: `
+      mutation {
+        createOffer (input: {
+          userId: ${userId},
+          listingId: ${listingId},
+          produceName: "${offer.itemName}",
+          produceType: "${offer.itemType}",
+          description: "${offer.description}",
+          quantity: ${offer.quantity},
+          unit: "${offer.unit}",
+          dateHarvested: "${offer.date}"}) {
+            offer {
+              produceName
+              produceType
+              description
+              quantity
+              unit
+              dateHarvested
+            }
+            error
+          }
+        }`
+    }})
+    .then(response => {
+      if (response.status === 200) {
+        console.log(response)
+        dispatch ({
+          type: 'CREATE_OFFER',
+          offerId: response.data.data.createOffer.offer.id,
+          error: response.data.data.createOffer.error
+        })
+      } else {
+        console.error(response)
+      }
+    })
+  }
+}
+
 export const updateUserOffers = (userId, data) => ({
   type: 'SET_USER_OFFERS',
   data
@@ -108,7 +142,6 @@ export const loginUser = (user, isAuthenticated) => {
     }})
     .then(response => {
       if (response.status === 200) {
-        console.log(response)
         dispatch ({
           type: 'LOGIN_USER',
           user: response.data.data.createUser.user,
