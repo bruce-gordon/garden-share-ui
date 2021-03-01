@@ -82,7 +82,7 @@ const dispatch = useDispatch()
         </div>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Listing Item</p>
-          <p>{ produceType } { produceName }</p>
+          <p>{ capitalizeLetter(produceType) } { produceName }</p>
         </div>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Quantity</p>
