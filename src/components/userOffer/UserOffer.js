@@ -59,7 +59,7 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
         </div>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Listing Item</p>
-          <p className='offer-value'>{ produceType } { produceName }</p>
+          <p className='offer-value'>{ capitalizeLetter(produceType) } { produceName }</p>
         </div>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Quantity</p>
