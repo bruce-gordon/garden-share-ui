@@ -3,9 +3,9 @@ import './NewListingPage.scss';
 import Form from '../form/Form.js';
 import { connect, useDispatch } from 'react-redux'
 import { createListing } from '../../redux/actions/actions.js'
+import { cookies } from 'react-cookie';
 
-
-const NewListingPage = ({ user }) => {
+const NewListingPage = ({ user, cookies }) => {
 
   const [newListings, setNewListings] = useState([])
   const dispatch = useDispatch()
@@ -19,12 +19,12 @@ const NewListingPage = ({ user }) => {
       unit: data.unit,
       date: data.date
     }
-    
-    dispatch(createListing(user.id, formattedListing))
+    let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(createListing(cookieId, formattedListing))
     setNewListings([...newListings, formattedListing])
-    // console.log('data', data)
-    // dispatch(updateUserOffers(data))
   }
+
+  console.log(cookies.cookies.userId)
 
   const userListings = newListings.map(listing => {
     return(
@@ -55,9 +55,10 @@ const mapDispatchToProps = dispatch => ({
   createListing: (userId, listing) => dispatch(createListing(userId, listing))
 })
 
-function newListingPageState(state) {
+function newListingPageState(state, ownProps) {
   return {
-    user: state.user.user
+    user: state.user.user,
+    cookies: ownProps.cookies
   }
 }
 
