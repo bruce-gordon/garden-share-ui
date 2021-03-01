@@ -10,9 +10,10 @@ import NewListingPage from '../newListingPage/NewListingPage.js'
 import Profile from '../profile/Profile.js'
 import UserInfo from '../userInfo/UserInfo.js'
 import { useAuth0 } from '@auth0/auth0-react'
+import { withCookies } from 'react-cookie'
 import './App.scss'
 
-const App = () => {
+const App = ({cookies}) => {
   const { isLoading } = useAuth0();
 
   if (isLoading) {
@@ -42,12 +43,20 @@ const App = () => {
                 <ProductPage
                   id={ `${match.params.id}` }
                   key={ `${match.params.id}` }
+                  cookies={ cookies }
                 />
               )
             }}>
           </Route>
-          <Route path='/create-new-listing'>
-            <NewListingPage />
+          <Route
+            path='/create-new-listing'
+            render={() => {
+              return (
+                <NewListingPage
+                  cookies={ cookies }
+                />
+              )
+            }}>
           </Route>
           <Route path={'/profile'}>
             <Profile />
@@ -61,4 +70,4 @@ const App = () => {
   }
 }
 
-export default App;
+export default withCookies(App);
