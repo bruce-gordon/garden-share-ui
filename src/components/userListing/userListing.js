@@ -4,7 +4,7 @@ import { connect, useDispatch } from 'react-redux'
 import { acceptUserOffer, declineUserOffer, updateUserListings } from '../../redux/actions/actions.js'
 
 const UserListing = ({ id, updatedAt, produceType, produceName, quantity, unit, offers, status, user }) => {
-  
+
 const dispatch = useDispatch()
 
   const formatDate = (inputdate) => {
@@ -28,8 +28,11 @@ const dispatch = useDispatch()
     return (offer.status === 'pending' || offer.status === 'accepted')
   })
 
+  const capitalizeLetter = (word) => {
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  }
   // console.log('filtered offers', filteredOffers, offers)
-  
+
   const allOffers = filteredOffers.map(offer => {
     return(
       <div
@@ -42,7 +45,7 @@ const dispatch = useDispatch()
         </div>
         <div className='sub-section' id={ offer.id }>
           <p className='sub-heading'>Listing Item</p>
-          <p>{ offer.produceType } { offer.produceName }</p>
+          <p>{ capitalizeLetter(offer.produceType) } { offer.produceName }</p>
         </div>
         <div className='sub-section' id={ offer.id }>
           <p className='sub-heading'>Quantity</p>

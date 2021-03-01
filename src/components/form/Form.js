@@ -40,7 +40,7 @@ const Form = ({ submitFunc }) => {
         </select>
         <input className='form-space' type='text' placeholder='Type' value={ state.itemType } name='itemType' onChange={ handleChange } />
         <input className='form-space' type='text' placeholder='Description' value={ state.description } name='description' onChange={ handleChange } />
-        <input className='form-space' type='number' placeholder='Quantity' value={ state.quantity } name='quantity' onChange={ handleChange } />
+        <input className='form-space' type='number' placeholder='Quantity' value={ state.quantity } name='quantity' min='1' onChange={ handleChange } />
         <input className='form-space' type='text' placeholder='unit (ex: lbs)' value={ state.unit } name='unit' onChange={ handleChange } />
         <input className='form-space' type='date' placeholder='Date Harvested' value={ state.date } name='date' onChange={ handleChange } />
         <button className='submit-button' onClick={ handleSubmit }>Submit</button>
