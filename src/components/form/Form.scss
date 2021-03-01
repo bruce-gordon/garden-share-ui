@@ -23,3 +23,11 @@
     @include button-active($navBarActive);
   }
 }
+
+.disabled-button {
+  @include button($gray);
+  margin: 1em;
+  &:hover {
+    cursor: auto;
+  }
+}
