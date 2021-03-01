@@ -1,0 +1,33 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.filter {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.homepage {
+  background: $gray;
+  padding-top: 1em;
+}
+
+label {
+  margin-right: 1em;
+}
+
+.homepage-header {
+  text-align: center;
+  margin-top: 0;
+  background: $gray;
+
+}
+
+.filtered-products {
+  @include flexRow();
+  flex-wrap: wrap;
+  height: auto;
+  background: $white;
+  margin: 1em;
+  border: 2px solid green;
+}

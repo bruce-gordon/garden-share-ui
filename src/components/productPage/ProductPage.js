@@ -50,7 +50,7 @@ const ProductPage = ({ id, theUser, product }) => {
           <p><b>Amount Available:</b> { product.quantity } { product.unit }</p>
           <p><b>Description:</b> { product.description }</p>
           <p><b>Grown by:</b> { product.user.firstName }</p>
-          <p><b>Harvested on:</b> { product.dateHarvested }</p>
+          <p><b>Harvested on:</b> { formatDate(product.dateHarvested) }</p>
           <p><b>Zip Code:</b> { product.zipCode }</p>
         </div>
         <h3>Complete This Form to Make an Offer</h3>

@@ -47,6 +47,12 @@
   height: fit-content;
 }
 
+@mixin flexRow() {
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+}
+
 @mixin subSection() {
   display: flex;
   flex-direction: column;

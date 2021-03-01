@@ -1,13 +1,29 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
 .productCard {
   display: flex;
   justify-content: center;
   flex-direction: column;
   border: 3px solid black;
-  width: 20%;
-  padding-left: 1em;
+  padding: 1em;
+  height: 10em;
+  width: 15em;
   margin: 1em;
+  background: $lightGreen;
+  text-decoration: none;
+  &:hover {
+    background: $green;
+    color: $white;
+    border: 3px solid $lightGreen;
+  }
+}
+
+.product-text {
+  text-decoration: none;
+  color: black;
 }
 
 .cardHeader {
-  margin-bottom: 0em
+  margin-bottom: 0em;
 }
