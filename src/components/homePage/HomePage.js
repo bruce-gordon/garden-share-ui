@@ -4,6 +4,7 @@ import ProductCard from '../productCard/ProductCard.js'
 import { updateListingData, loginUser } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
+import './HomePage.scss'
 
 const HomePage = ({ listingData, gardener }) => {
 
@@ -44,8 +45,6 @@ const HomePage = ({ listingData, gardener }) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-
-
   const filterByOption = () => {
     let dropdown = document.getElementById('productTypes')
     if (selectedValue) {
@@ -85,17 +84,19 @@ const HomePage = ({ listingData, gardener }) => {
 
   if (produceData.length) {
     return (
-      <div>
-        <h2>Available Produce In Your Area</h2>
-        <label htmlFor='productTypes'>Vegetable Types
-        <select id='productTypes' value={selectedValue} data-testid='veggieTypesDropdown' onChange={ handleChange }>
-        <option value=''>
-        All Listings
-        </option>
-        { dropdownOptions }
-        </select>
-        </label>
-        <div>
+      <div className='homepage'>
+        <h2 className='homepage-header'>Available Produce In Your Area</h2>
+        <div className='filter'>
+          <label htmlFor='productTypes'>Vegetable Types
+          </label>
+          <select id='productTypes' value={selectedValue} data-testid='veggieTypesDropdown' onChange={ handleChange }>
+          <option value=''>
+          All Listings
+          </option>
+          { dropdownOptions }
+          </select>
+        </div>
+        <div className='filtered-products'>
         { filteredProducts }
         </div>
       </div>

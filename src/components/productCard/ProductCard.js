@@ -6,11 +6,11 @@ export default function ProductCard({ id, produceName, type, quantity, unit, zip
 
   return (
     <div className='productCard' data-testid='productCard'>
-      <Link to={`/listing/${id}`}>
-        <h3 className='cardHeader'>{ produceName }</h3>
-        <p>Type: <i>{ type }</i></p>
-        <p>{ quantity } { unit }</p>
-        <p>Zip Code: { zipCode }</p>
+      <Link className='product-text' to={`/listing/${id}`}>
+        <h3 className='cardHeader product-text'>{ produceName }</h3>
+        <p className='product-text'>Type: <i>{ type }</i></p>
+        <p className='product-text'><i>{ quantity } { unit }</i></p>
+        <p className='product-text'>Zip Code: <i>{ zipCode }</i></p>
       </Link>
     </div>
   )
