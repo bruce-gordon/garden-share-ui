@@ -11,7 +11,7 @@ describe('offer reducer', () => {
     expect(state).toEqual({error: [], offerId: "", produceName: "", produceType: ""})
   })
 
-  it('should add an offer to state', () => {
+  it('should be able to add an offer to state', () => {
     const currentState = {}
     const action = { type: 'CREATE_OFFER' }
 
