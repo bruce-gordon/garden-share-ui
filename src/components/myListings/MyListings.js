@@ -5,23 +5,26 @@ import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
 import './MyListings.scss'
 
-const MyListings = ({ myListings }) => {
+const MyListings = ({ myListings, user }) => {
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(updateUserListings("userId", mockUserListings.data.getUserListings.listings))
+    // console.log('user', user)
+    dispatch(updateUserListings(user.id))
   }, [])
 
   const filterListings = (listings, listingType) => {
+    console.log('listings', listings)
     return listings.filter(listing => {
       if(listing.status === listingType) {
         return listing
       }
     })
+    // if offer.status === declined, remove from myListings.listing.offers
   }
 
-  const openListings = filterListings(myListings, 'open').map(listing => {
+  const openListings = filterListings(myListings, 'pending').map(listing => {
     return (
       <UserListing
         id={ listing.id }
@@ -30,7 +33,7 @@ const MyListings = ({ myListings }) => {
         produceType={ listing.produceType }
         produceName={ listing.produceName }
         quantity={ listing.quantity }
-        units={ listing.units }
+        unit={ listing.unit }
         offers={ listing.offers }
         status={ listing.status }
       />
@@ -46,12 +49,13 @@ const MyListings = ({ myListings }) => {
         produceType={ listing.produceType }
         produceName={ listing.produceName }
         quantity={ listing.quantity }
-        units={ listing.units }
+        unit={ listing.unit }
         offers={ listing.offers }
         status={ listing.status }
       />
     )
   })
+
   return (
     <div>
       <div className='my-listings'>
@@ -71,12 +75,13 @@ const MyListings = ({ myListings }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateUserListings: text => dispatch(updateUserListings(text))
+  updateUserListings: (userId) => dispatch(updateUserListings(userId))
 })
 
 function myListingsState(state) {
   return {
-    myListings: state.userListings.listings
+    myListings: state.userListings.listings,
+    user: state.user.user
   }
 }
 

@@ -19,7 +19,7 @@ const NewListingPage = ({ user }) => {
       unit: data.unit,
       date: data.date
     }
-    console.log('formatted listing', formattedListing)
+    
     dispatch(createListing(user.id, formattedListing))
     setNewListings([...newListings, formattedListing])
     // console.log('data', data)

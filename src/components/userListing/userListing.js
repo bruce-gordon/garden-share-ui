@@ -1,35 +1,62 @@
 import React from 'react';
 import './UserListing.scss';
+import { connect, useDispatch } from 'react-redux'
+import { acceptUserOffer, declineUserOffer, updateUserListings } from '../../redux/actions/actions.js'
 
-const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units, offers, status }) => {
+const UserListing = ({ id, updatedAt, produceType, produceName, quantity, unit, offers, status, user }) => {
+  
+const dispatch = useDispatch()
 
-  const allOffers = offers.map(offer => {
+  const formatDate = (inputdate) => {
+    let date = new Date (inputdate);
+    if (!isNaN(date.getTime())) {
+      return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+     }
+  }
+
+  const acceptOffer = (offerId) => {
+    dispatch(acceptUserOffer(offerId))
+    dispatch(updateUserListings(user.id))
+  }
+
+  const declineOffer = (offerId) => {
+    dispatch(declineUserOffer(offerId))
+    dispatch(updateUserListings(user.id))
+  }
+
+  const filteredOffers = offers.filter(offer => {
+    return (offer.status === 'pending' || offer.status === 'accepted')
+  })
+
+  // console.log('filtered offers', filteredOffers, offers)
+  
+  const allOffers = filteredOffers.map(offer => {
     return(
       <div
         className='listing-offer'
-        id={ id }
-        key={ id }>
-        <div className='sub-section' id={ id }>
+        id={ offer.id }
+        key={ offer.id }>
+        <div className='sub-section' id={ offer.id }>
           <p className='sub-heading'>Date Posted</p>
-          <p>{ offer.updatedAt }</p>
+          <p>{ formatDate(offer.updatedAt) }</p>
         </div>
-        <div className='sub-section' id={ id }>
+        <div className='sub-section' id={ offer.id }>
           <p className='sub-heading'>Listing Item</p>
           <p>{ offer.produceType } { offer.produceName }</p>
         </div>
-        <div className='sub-section' id={ id }>
+        <div className='sub-section' id={ offer.id }>
           <p className='sub-heading'>Quantity</p>
           <p>{ offer.quantity }</p>
         </div>
-        <div className='sub-section' id={ id }>
+        <div className='sub-section' id={ offer.id }>
           <p className='sub-heading'>Unit</p>
-          <p>{ offer.units }</p>
+          <p>{ offer.unit }</p>
         </div>
         { offer.status === 'pending' &&
-        <div className='offer-options'>
-          <button className='accept'>Accept</button>
-          <button className='decline'>Decline</button>
-        </div>
+          <div className='offer-options'>
+            <button className='accept' onClick={ () => acceptOffer(offer.id) }>Accept</button>
+            <button className='decline' onClick={ () => declineOffer(offer.id) }>Decline</button>
+          </div>
         }
         { offer.status === 'accepted' &&
           <div className='contact-info'>
@@ -48,7 +75,7 @@ const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units,
       <div className='user-listing'>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Date Posted</p>
-          <p>{ updatedAt }</p>
+          <p>{ formatDate(updatedAt) }</p>
         </div>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Listing Item</p>
@@ -60,7 +87,7 @@ const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units,
         </div>
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Unit</p>
-          <p>{ units }</p>
+          <p>{ unit }</p>
         </div>
       </div>
       <h4 className='section-heading'>Offers</h4>
@@ -71,4 +98,19 @@ const UserListing = ({ id, updatedAt, produceType, produceName, quantity, units,
   )
 }
 
-export default UserListing;
+const mapDispatchToProps = dispatch => ({
+  acceptUserOffer: (offerId) => dispatch(acceptUserOffer(offerId)),
+  declineUserOffer: (offerId) => dispatch(declineUserOffer(offerId)),
+  updateUserListings: (userId) => dispatch(updateUserListings(userId))
+})
+
+function userListingState(state) {
+  return {
+    listings: state.userListings.listings,
+    user: state.user.user
+  }
+}
+
+
+
+export default connect(userListingState, mapDispatchToProps)(UserListing);
