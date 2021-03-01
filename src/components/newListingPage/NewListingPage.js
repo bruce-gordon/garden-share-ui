@@ -24,8 +24,6 @@ const NewListingPage = ({ user, cookies }) => {
     setNewListings([...newListings, formattedListing])
   }
 
-  console.log(cookies.cookies.userId)
-
   const userListings = newListings.map(listing => {
     return(
       <div className='new-listing-card'>

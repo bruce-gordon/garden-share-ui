@@ -5,11 +5,11 @@ import Form from '../form/Form.js'
 import { updateProductPageData, createOffer } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
+import { cookies } from 'react-cookie';
 
-const ProductPage = ({ id, theUser, product }) => {
+const ProductPage = ({ id, theUser, product, cookies }) => {
 
   const { user } = useAuth0();
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const ProductPage = ({ id, theUser, product }) => {
       unit: offer.unit,
       date: offer.date
     }
-    console.log(parseInt(id), theUser.id, formattedOffer)
-    dispatch(createOffer(parseInt(id), theUser.id, formattedOffer))
+    let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(createOffer(cookieId, theUser.id, formattedOffer))
   }
 
   const formatDate = (inputdate) => {
@@ -44,7 +44,6 @@ const ProductPage = ({ id, theUser, product }) => {
   if (product.produceType) {
     return (
       <div className='product-page'>
-        { console.log(product) }
         <h2 className='product-header'>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
         <div className='product-text-container'>
           <p><b>Amount Available:</b> { product.quantity } { product.unit }</p>
@@ -70,10 +69,11 @@ const mapDispatchToProps = dispatch => ({
   createOffer: text => dispatch(createOffer(text))
 })
 
-function productPageState(state) {
+function productPageState(state, ownProps) {
   return {
     product: state.productPage.productPageData,
-    theUser: state.user.user
+    theUser: state.user.user,
+    cookies: ownProps.cookies
   }
 }
 
