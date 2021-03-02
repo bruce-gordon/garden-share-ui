@@ -108,6 +108,14 @@ export const createListing = (userId, listing) => {
   }
 }
 
+export const clearOffer = () => {
+  return dispatch => {
+    dispatch ({
+      type: 'CLEAR_OFFER'
+    })
+  }
+}
+
 export const createOffer = (listingId, userId, offer) => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'

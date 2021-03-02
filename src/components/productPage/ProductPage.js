@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProductPage.scss';
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
-import { updateProductPageData, createOffer } from '../../redux/actions/actions.js'
+import { updateProductPageData, createOffer, clearOffer } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cookies } from 'react-cookie';
@@ -10,11 +10,13 @@ import { cookies } from 'react-cookie';
 const ProductPage = ({ id, theUser, product, offer, cookies }) => {
 
   const { user } = useAuth0();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const [newOffer, setNewOffer] = useState('');
 
   useEffect(() => {
-    const parsedId = parseInt(id)
-    dispatch(updateProductPageData(parsedId))
+    const parsedId = parseInt(id);
+    dispatch(updateProductPageData(parsedId));
+    dispatch(clearOffer());
   }, [])
 
   const capitalizeLetter = (word) => {
@@ -31,7 +33,7 @@ const ProductPage = ({ id, theUser, product, offer, cookies }) => {
       date: offer.date
     }
     let cookieId = parseInt(cookies.cookies.userId);
-    dispatch(createOffer(id, cookieId, formattedOffer))
+    dispatch(createOffer(id, cookieId, formattedOffer));
   }
 
   const formatDate = (inputdate) => {
@@ -82,7 +84,8 @@ const ProductPage = ({ id, theUser, product, offer, cookies }) => {
 
 const mapDispatchToProps = dispatch => ({
   updateProductPageData: text => dispatch(updateProductPageData(text)),
-  createOffer: text => dispatch(createOffer(text))
+  createOffer: text => dispatch(createOffer(text)),
+  clearOffer: () => dispatch(clearOffer())
 })
 
 function productPageState(state, ownProps) {
