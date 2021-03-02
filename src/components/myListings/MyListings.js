@@ -10,18 +10,15 @@ const MyListings = ({ myListings, user }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // console.log('user', user)
     dispatch(updateUserListings(user.id))
   }, [])
 
   const filterListings = (listings, listingType) => {
-    console.log('listings', listings)
     return listings.filter(listing => {
       if(listing.status === listingType) {
         return listing
       }
     })
-    // if offer.status === declined, remove from myListings.listing.offers
   }
 
   const openListings = filterListings(myListings, 'pending').map(listing => {

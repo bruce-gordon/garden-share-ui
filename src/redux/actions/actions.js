@@ -68,7 +68,7 @@ export const createListing = (userId, listing) => {
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
     method: 'post',
     data: {
-      query: 
+      query:
         `mutation {
           createListing(input: {
           userId: ${userId},
@@ -95,7 +95,6 @@ export const createListing = (userId, listing) => {
     }
     })
     .then(response => {
-      console.log('response', response)
       if (response.status === 200) {
         dispatch({
           type: "CREATE_LISTING",
@@ -251,7 +250,6 @@ export const updateUserListings = (userId) => {
     }
     })
     .then((response) => {
-      console.log('data', response.data.data.getUserListings.listings)
       if (response.status === 200) {
         dispatch({
           type: 'GET_USER_LISTINGS',
