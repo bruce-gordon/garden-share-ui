@@ -186,6 +186,7 @@ export const updateUserOffers = (userId) => {
               produceType
               quantity
               unit
+              status
               dateHarvested
               updatedAt
               user {
