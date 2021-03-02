@@ -14,13 +14,24 @@ import { withCookies } from 'react-cookie'
 import './App.scss'
 
 const App = ({cookies}) => {
-  const { isLoading } = useAuth0();
-
-  if (isLoading) {
+  const { isAuthenticated, isLoading } = useAuth0();
+  if (!isAuthenticated) {
+    return (
+      <main>
+        <Switch>
+          < Route path='/login' >
+            <Login />
+          </Route >
+          <Route path='*' component={Login} />
+        </Switch>
+      </main>
+    )
+  }
+  if (isAuthenticated && isLoading) {
     return <div>The page is loading.  Just a moment.</div>
   }
 
-  if (!isLoading) {
+  if (isAuthenticated && !isLoading) {
     return (
       <main>
         <div className="App">
