@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserOffer.scss';
 
-const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, status, listingUser, offers }) => {
+const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, status, listingUser, offers, cookies }) => {
 
   const formatDate = (inputdate) => {
     let date = new Date (inputdate);
@@ -15,7 +15,6 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
   }
 
   const allOffers = offers.map((offer, index) => {
-    console.log(offer)
     return(
       <div
         className='listing-offer'
@@ -46,7 +45,6 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
         }
       </div>
     )
-
   })
 
   return (

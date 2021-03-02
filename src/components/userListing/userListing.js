@@ -3,7 +3,7 @@ import './UserListing.scss';
 import { connect, useDispatch } from 'react-redux'
 import { acceptUserOffer, declineUserOffer, updateUserListings } from '../../redux/actions/actions.js'
 
-const UserListing = ({ id, updatedAt, produceType, produceName, quantity, unit, offers, status, user }) => {
+const UserListing = ({ id, updatedAt, produceType, produceName, quantity, unit, offers, status, user, cookies }) => {
 
 const dispatch = useDispatch()
 
@@ -15,13 +15,17 @@ const dispatch = useDispatch()
   }
 
   const acceptOffer = (offerId) => {
+    console.log('accept')
     dispatch(acceptUserOffer(offerId))
-    dispatch(updateUserListings(user.id))
+    let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(updateUserListings(cookieId))
   }
 
   const declineOffer = (offerId) => {
+    console.log('decline')
     dispatch(declineUserOffer(offerId))
-    dispatch(updateUserListings(user.id))
+    let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(updateUserListings(cookieId))
   }
 
   const filteredOffers = offers.filter(offer => {

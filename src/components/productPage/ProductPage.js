@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import './ProductPage.scss';
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
@@ -11,7 +11,6 @@ const ProductPage = ({ id, theUser, product, offer, cookies }) => {
 
   const { user } = useAuth0();
   const dispatch = useDispatch();
-  const [newOffer, setNewOffer] = useState('');
 
   useEffect(() => {
     const parsedId = parseInt(id);

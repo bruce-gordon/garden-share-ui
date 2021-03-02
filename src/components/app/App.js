@@ -58,8 +58,15 @@ const App = ({cookies}) => {
               )
             }}>
           </Route>
-          <Route path={'/profile'}>
-            <Profile />
+          <Route
+            path={'/profile'}
+            render={() => {
+              return (
+                <Profile
+                  cookies={ cookies }
+                />
+              )
+            }}>
           </Route>
           <Route path='/about'>
             <UserInfo />

@@ -3,14 +3,16 @@ import UserListing from '../userListing/UserListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
+import { cookies } from 'react-cookie';
 import './MyListings.scss'
 
-const MyListings = ({ myListings, user }) => {
+const MyListings = ({ myListings, user, cookies }) => {
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(updateUserListings(user.id))
+    let cookieId = parseInt(cookies.cookies.userId)
+    dispatch(updateUserListings(cookieId))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -33,6 +35,7 @@ const MyListings = ({ myListings, user }) => {
         unit={ listing.unit }
         offers={ listing.offers }
         status={ listing.status }
+        cookies={ cookies }
       />
     )
   })
@@ -49,6 +52,7 @@ const MyListings = ({ myListings, user }) => {
         unit={ listing.unit }
         offers={ listing.offers }
         status={ listing.status }
+        cookies={ cookies }
       />
     )
   })
