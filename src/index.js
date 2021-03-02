@@ -7,18 +7,21 @@ import './index.css';
 import App from './components/app/App.js';
 import reportWebVitals from './reportWebVitals';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
-  <Auth0Provider 
+  <Auth0Provider
     domain='dev-wbsuhtm2.us.auth0.com'
     clientId='RuU4p6SrqA2mOiAtzGVQ3QDtCGaS0iKP'
     redirectUri='http://localhost:3000/homepage'
   >
-    <BrowserRouter>
-      <Provider store={ store }>
-          <App />
-      </Provider>
-    </BrowserRouter>
+    <CookiesProvider>
+      <BrowserRouter>
+        <Provider store={ store }>
+            <App />
+        </Provider>
+      </BrowserRouter>
+    </CookiesProvider>
   </Auth0Provider>,
   document.getElementById('root')
 );

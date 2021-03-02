@@ -15,6 +15,15 @@ const offer = (state = offerInitialState, action) => {
         error: action.error
       }
 
+    case 'CLEAR_OFFER':
+      return {
+        offerId: '',
+        produceName: '',
+        produceType: '',
+        error: []
+      }
+
+
     default:
       return state
   }

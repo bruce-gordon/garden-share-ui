@@ -2,19 +2,20 @@ import React, { useEffect } from 'react';
 import './ProductPage.scss';
 import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
-import { updateProductPageData, createOffer } from '../../redux/actions/actions.js'
+import { updateProductPageData, createOffer, clearOffer } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
+import { cookies } from 'react-cookie';
 
-const ProductPage = ({ id, theUser, product }) => {
+const ProductPage = ({ id, theUser, product, offer, cookies }) => {
 
   const { user } = useAuth0();
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const parsedId = parseInt(id)
-    dispatch(updateProductPageData(parsedId))
+    const parsedId = parseInt(id);
+    dispatch(updateProductPageData(parsedId));
+    dispatch(clearOffer());
   }, [])
 
   const capitalizeLetter = (word) => {
@@ -30,8 +31,8 @@ const ProductPage = ({ id, theUser, product }) => {
       unit: offer.unit,
       date: offer.date
     }
-    console.log(parseInt(id), theUser.id, formattedOffer)
-    dispatch(createOffer(parseInt(id), theUser.id, formattedOffer))
+    let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(createOffer(id, cookieId, formattedOffer));
   }
 
   const formatDate = (inputdate) => {
@@ -41,23 +42,38 @@ const ProductPage = ({ id, theUser, product }) => {
      }
   }
 
+  const confirmOffer = () => {
+    if (offer.offerId) {
+      return (
+        <div className='recent-offer'>
+          <h4 className='offer-text'>Your offer has been sent successfully!</h4>
+          <p className='offer-text'>Produce name: <b>{ offer.produceName }</b></p>
+          <p className='offer-text'>Type: <b>{ offer.produceType }</b></p>
+        </div>
+      )
+    }
+  }
+
   if (product.produceType) {
     return (
       <div className='product-page'>
-        { console.log(product) }
-        <h2 className='product-header'>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
-        <div className='product-text-container'>
-          <p><b>Amount Available:</b> { product.quantity } { product.unit }</p>
-          <p><b>Description:</b> { product.description }</p>
-          <p><b>Grown by:</b> { product.user.firstName }</p>
-          <p><b>Harvested on:</b> { formatDate(product.dateHarvested) }</p>
-          <p><b>Zip Code:</b> { product.zipCode }</p>
+        <div className='listing-portion'>
+          <h2 className='product-header'>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
+          <div className='product-text-container'>
+            <p><b>Amount Available:</b> { product.quantity } { product.unit }</p>
+            <p><b>Description:</b> { product.description }</p>
+            <p><b>Grown by:</b> { product.user.firstName }</p>
+            <p><b>Harvested on:</b> { formatDate(product.dateHarvested) }</p>
+            <p><b>Zip Code:</b> { product.zipCode }</p>
+          </div>
         </div>
-        <h3>Complete This Form to Make an Offer</h3>
-        <Form
-          submitFunc={ makeOffer }
-        />
-
+        <div className='offer-portion'>
+          <h3>Complete This Form to Make an Offer</h3>
+          { confirmOffer() }
+          <Form
+            submitFunc={ makeOffer }
+          />
+        </div>
       </div>
     )
   } else {
@@ -67,13 +83,16 @@ const ProductPage = ({ id, theUser, product }) => {
 
 const mapDispatchToProps = dispatch => ({
   updateProductPageData: text => dispatch(updateProductPageData(text)),
-  createOffer: text => dispatch(createOffer(text))
+  createOffer: text => dispatch(createOffer(text)),
+  clearOffer: () => dispatch(clearOffer())
 })
 
-function productPageState(state) {
+function productPageState(state, ownProps) {
   return {
     product: state.productPage.productPageData,
-    theUser: state.user.user
+    theUser: state.user.user,
+    offer: state.offer,
+    cookies: ownProps.cookies
   }
 }
 

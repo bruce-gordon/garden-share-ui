@@ -3,8 +3,8 @@
 
 .product-page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
   padding: 1em;
 }
 
@@ -18,4 +18,24 @@
   border: 2px solid green;
   margin-bottom: 1em;
   background: $gray;
+}
+
+.offer-portion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.offer-text {
+  margin: .25em;
+}
+
+.recent-offer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1em;
+  color: $navBarGreen;
+  background: $gray;
+  padding: 1em;
 }

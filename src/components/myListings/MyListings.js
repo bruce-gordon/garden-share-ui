@@ -3,14 +3,16 @@ import UserListing from '../userListing/UserListing.js'
 import mockUserListings from '../../mockData/mockUserListings.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserListings } from '../../redux/actions/actions.js';
+import { cookies } from 'react-cookie';
 import './MyListings.scss'
 
-const MyListings = ({ myListings }) => {
+const MyListings = ({ myListings, user, cookies }) => {
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(updateUserListings("userId", mockUserListings.data.getUserListings.listings))
+    let cookieId = parseInt(cookies.cookies.userId)
+    dispatch(updateUserListings(cookieId))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -21,7 +23,7 @@ const MyListings = ({ myListings }) => {
     })
   }
 
-  const openListings = filterListings(myListings, 'open').map(listing => {
+  const openListings = filterListings(myListings, 'pending').map(listing => {
     return (
       <UserListing
         id={ listing.id }
@@ -30,9 +32,10 @@ const MyListings = ({ myListings }) => {
         produceType={ listing.produceType }
         produceName={ listing.produceName }
         quantity={ listing.quantity }
-        units={ listing.units }
+        unit={ listing.unit }
         offers={ listing.offers }
         status={ listing.status }
+        cookies={ cookies }
       />
     )
   })
@@ -46,12 +49,14 @@ const MyListings = ({ myListings }) => {
         produceType={ listing.produceType }
         produceName={ listing.produceName }
         quantity={ listing.quantity }
-        units={ listing.units }
+        unit={ listing.unit }
         offers={ listing.offers }
         status={ listing.status }
+        cookies={ cookies }
       />
     )
   })
+
   return (
     <div>
       <div className='my-listings'>
@@ -71,12 +76,13 @@ const MyListings = ({ myListings }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  updateUserListings: text => dispatch(updateUserListings(text))
+  updateUserListings: (userId) => dispatch(updateUserListings(userId))
 })
 
 function myListingsState(state) {
   return {
-    myListings: state.userListings.listings
+    myListings: state.userListings.listings,
+    user: state.user.user
   }
 }
 

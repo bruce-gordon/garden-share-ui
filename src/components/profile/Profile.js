@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './Profile.scss';
 import MyListings from '../myListings/MyListings.js'
 import MyOffers from '../myOffers/MyOffers.js'
+import { cookies } from 'react-cookie';
+import { connect } from 'react-redux'
 
-const Profile = () => {
+const Profile = ({ cookies }) => {
 
   const [view, setView] = useState(true)
 
@@ -31,13 +33,19 @@ const Profile = () => {
         <button className={ highlightMyOffers() } onClick={ handleClick }>My Offers</button>
       </div>
       <div>
-        { view && <MyListings /> }
+        { view && <MyListings cookies={ cookies } /> }
       </div>
       <div>
-        { !view && <MyOffers /> }
+        { !view && <MyOffers cookies={ cookies } /> }
       </div>
     </div>
   )
 }
 
-export default Profile;
+function profileState(ownProps) {
+  return {
+    cookies: ownProps.cookies
+  }
+}
+
+export default connect()(Profile);

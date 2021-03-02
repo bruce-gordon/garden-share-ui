@@ -5,12 +5,13 @@ import { updateUserOffers } from '../../redux/actions/actions.js';
 import mockUserOffers from '../../mockData/mockUserOffer.js'
 
 
-const MyOffers = ({ userListings, theUser }) => {
+const MyOffers = ({ userListings, theUser, cookies }) => {
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(updateUserOffers(theUser.id))
+    let cookieId = parseInt(cookies.cookies.userId)
+    dispatch(updateUserOffers(cookieId))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -34,12 +35,12 @@ const MyOffers = ({ userListings, theUser }) => {
         status={ listing.status }
         listingUser={ listing.user }
         offers={ listing.offers }
+        cookies={ cookies }
       />
     )
   })
 
   const acceptedListings = filterListings(userListings, 'accepted').map((listing, index) => {
-    console.log(listing)
     return (
       <UserOffer
         id={ listing.id }
@@ -52,6 +53,7 @@ const MyOffers = ({ userListings, theUser }) => {
         status={ listing.status }
         listingUser={ listing.user }
         offers={ listing.offers }
+        cookies={ cookies }
       />
     )
   })

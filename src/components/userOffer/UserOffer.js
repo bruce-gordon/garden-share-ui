@@ -1,7 +1,7 @@
 import React from 'react';
 import './UserOffer.scss';
 
-const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, status, listingUser, offers }) => {
+const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, status, listingUser, offers, cookies }) => {
 
   const formatDate = (inputdate) => {
     let date = new Date (inputdate);
@@ -14,8 +14,9 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
 
-  const allOffers = offers.map((offer, index) => {
-    console.log(offer)
+  const filteredOffers = offers.filter(offer => offer.status !== 'declined');
+
+  const allOffers = filteredOffers.map((offer, index) => {
     return(
       <div
         className='listing-offer'
@@ -46,36 +47,39 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
         }
       </div>
     )
-
   })
 
-  return (
-    <div className='listing-section'>
-      <h4 className='section-heading'>Listing I offered on</h4>
-      <div className='user-listing'>
-        <div className='sub-section' id={ id }>
-          <p className='sub-heading'>Date Posted</p>
-          <p className='offer-value'>{ formatDate(updatedAt) }</p>
+  if (allOffers.length) {
+    return (
+      <div className='listing-section'>
+        <h4 className='section-heading'>Listing I offered on</h4>
+        <div className='user-listing'>
+          <div className='sub-section' id={ id }>
+            <p className='sub-heading'>Date Posted</p>
+            <p className='offer-value'>{ formatDate(updatedAt) }</p>
+          </div>
+          <div className='sub-section' id={ id }>
+            <p className='sub-heading'>Listing Item</p>
+            <p className='offer-value'>{ capitalizeLetter(produceType) } { produceName }</p>
+          </div>
+          <div className='sub-section' id={ id }>
+            <p className='sub-heading'>Quantity</p>
+            <p className='offer-value'>{ quantity }</p>
+          </div>
+          <div className='sub-section' id={ id }>
+            <p className='sub-heading'>Unit</p>
+            <p className='offer-value'>{ unit }</p>
+          </div>
         </div>
-        <div className='sub-section' id={ id }>
-          <p className='sub-heading'>Listing Item</p>
-          <p className='offer-value'>{ produceType } { produceName }</p>
-        </div>
-        <div className='sub-section' id={ id }>
-          <p className='sub-heading'>Quantity</p>
-          <p className='offer-value'>{ quantity }</p>
-        </div>
-        <div className='sub-section' id={ id }>
-          <p className='sub-heading'>Unit</p>
-          <p className='offer-value'>{ unit }</p>
-        </div>
+        <h4 className='section-heading'>What I offered</h4>
+          <section className='listing-offer-section'>
+            { allOffers }
+          </section>
       </div>
-      <h4 className='section-heading'>What I offered</h4>
-        <section className='listing-offer-section'>
-          { allOffers }
-        </section>
-    </div>
-  )
+    )
+  } else {
+    return null
+  }
 }
 
 export default UserOffer;

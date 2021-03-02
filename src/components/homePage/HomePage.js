@@ -4,21 +4,29 @@ import ProductCard from '../productCard/ProductCard.js'
 import { updateListingData, loginUser } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
+import { useCookies, withCookies } from 'react-cookie';
+
 import './HomePage.scss'
 
 const HomePage = ({ listingData, gardener }) => {
 
   const [selectedValue, setSelectedValue] = useState('')
-  // const [produceData, setProduceData] = useState([])
+  const [cookies, setCookie] = useCookies(['userId'])
+
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(loginUser(user, isAuthenticated))
-    dispatch(updateListingData())
-    // setProduceData(combineData(listingData))
+    dispatch(loginUser(user, isAuthenticated));
+    dispatch(updateListingData());
   }, [])
+
+  if (!cookies.userId) {
+    setCookie('userId', gardener.user.id, { path: '/'});
+  }
+
+  console.log( cookies.userId )
 
   const combineData = (dataObject) => {
     const dataKeys = Object.keys(dataObject);
