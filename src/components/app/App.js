@@ -43,6 +43,7 @@ const App = ({ cookies }) => {
           <Route path='/homepage'>
             <HomePage />
           </Route>
+          <Redirect from='/login' to='/homepage'/>
           <Route
             path={'/listing/:id'}
             render={({ match }) => {
