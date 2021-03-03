@@ -15,14 +15,16 @@
   height: 5em;
 }
 
-.logo {
+.navbarLogo {
   max-height: 60px;
   max-width: 120px;
+}
+
+.logoLink {
   &:hover {
     border: 2px solid black;
   }
 }
-
 .navOptions {
   @include nav();
   width: 40%;
