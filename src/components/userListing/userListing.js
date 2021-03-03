@@ -19,12 +19,14 @@ const dispatch = useDispatch()
     dispatch(acceptUserOffer(offerId))
     let cookieId = parseInt(cookies.cookies.userId);
     dispatch(updateUserListings(cookieId))
+    dispatch(updateUserListings(cookieId))
   }
 
   const declineOffer = (offerId) => {
     console.log('decline')
     dispatch(declineUserOffer(offerId))
     let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(updateUserListings(cookieId))
     dispatch(updateUserListings(cookieId))
   }
 

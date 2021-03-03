@@ -18,7 +18,7 @@ const App = ({ cookies }) => {
     return (
       <main>
         <Switch>
-          < Route path='/login' >
+          < Route path='/' >
             <Login />
           </Route >
         </Switch>
