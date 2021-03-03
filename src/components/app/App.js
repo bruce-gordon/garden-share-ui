@@ -1,6 +1,6 @@
 import './App.scss';
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from '../navBar/NavBar.js';
 import Login from '../login/Login.js'
 import SignUp from '../signUp/SignUp.js'
@@ -22,7 +22,6 @@ const App = ({ cookies }) => {
           < Route path='/login' >
             <Login />
           </Route >
-          <Route path='*' component={Login} />
         </Switch>
       </main>
     )
@@ -38,9 +37,6 @@ const App = ({ cookies }) => {
           <NavBar />
         </div>
         <Switch>
-          <Route path='/login'>
-            <Login />
-          </Route>
           <Route path='/sign-up'>
             <SignUp />
           </Route>
