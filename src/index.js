@@ -13,7 +13,7 @@ ReactDOM.render(
   <Auth0Provider
     domain='dev-wbsuhtm2.us.auth0.com'
     clientId='RuU4p6SrqA2mOiAtzGVQ3QDtCGaS0iKP'
-    redirectUri='http://localhost:3000/homepage'
+    redirectUri='https://garden-share-front-end.herokuapp.com/homepage'
   >
     <CookiesProvider>
       <BrowserRouter>
