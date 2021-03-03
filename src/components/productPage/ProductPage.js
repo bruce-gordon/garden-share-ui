@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './ProductPage.scss';
-import mockListing from '../../mockData/mockListing.js'
 import Form from '../form/Form.js'
 import { updateProductPageData, createOffer, clearOffer } from '../../redux/actions/actions.js'
 import { connect, useDispatch } from 'react-redux'
