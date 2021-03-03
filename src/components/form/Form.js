@@ -45,6 +45,9 @@ const Form = ({ submitFunc }) => {
           <option value=''>
             Select Item
           </option>
+          <option value='Corn'>Corn</option>
+          <option value='Lettuce'>Lettuce</option>
+          <option value='Peppers'>Peppers</option>
           <option value='Potato'>Potato</option>
           <option value='Tomato'>Tomato</option>
           <option value='Zucchuni'>Zucchini</option>

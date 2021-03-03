@@ -21,11 +21,11 @@ const HomePage = ({ listingData, gardener }) => {
     dispatch(updateListingData());
   }, [])
 
-  if (!cookies.userId) {
-    setCookie('userId', gardener.user.id, { path: '/'});
+  if (!cookies.userId && gardener.user.id) {
+    setCookie("userId", gardener.user.id, { path: "/" });
   }
 
-  console.log( cookies.userId )
+  // console.log( cookies.userId )
 
   const combineData = (dataObject) => {
     const dataKeys = Object.keys(dataObject);
@@ -72,7 +72,8 @@ const HomePage = ({ listingData, gardener }) => {
   })
 
   const filteredProducts = filterByOption().map(listing => {
-    return (
+    if (listing.status === 'pending') {
+      return (
       <ProductCard
         key={listing.id}
         id={listing.id}
@@ -82,7 +83,7 @@ const HomePage = ({ listingData, gardener }) => {
         unit={listing.unit}
         zipCode={listing.zip_code}
       />
-    )
+    )}
   })
 
   const handleChange = (e) => {

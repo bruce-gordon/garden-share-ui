@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.7.1",
     "axios": "^0.21.1",
     "gql-query-builder": "^3.5.5",
+    "heroku": "^7.50.0",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
     "react-cookie": "^4.0.3",
@@ -18,6 +19,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "travis-cli": "^1.0.9",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
