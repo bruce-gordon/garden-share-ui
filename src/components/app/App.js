@@ -2,7 +2,7 @@ import './App.scss';
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from '../navBar/NavBar.js';
-import Login from '../login/Login.js'
+import Login from '../Login/Login.js'
 import HomePage from '../homePage/HomePage.js'
 import ProductPage from '../productPage/ProductPage.js'
 import NewListingPage from '../newListingPage/NewListingPage.js'

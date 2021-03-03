@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import UserListing from './UserListing';
+import UserListing from './userListing';
 import '@testing-library/jest-dom';
 
 describe('UserListing', () => {

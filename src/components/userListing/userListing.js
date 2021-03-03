@@ -1,5 +1,5 @@
 import React from 'react';
-import './UserListing.scss';
+import './userListing.scss';
 import { connect, useDispatch } from 'react-redux'
 import { acceptUserOffer, declineUserOffer, updateUserListings } from '../../redux/actions/actions.js'
 
