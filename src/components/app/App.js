@@ -13,3 +13,79 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { withCookies } from 'react-cookie'
 import './App.scss'
 
+const App = ({ cookies }) => {
+  const { isAuthenticated, isLoading } = useAuth0();
+  if (!isAuthenticated) {
+    return (
+      <main>
+        <Switch>
+          < Route path='/login' >
+            <Login />
+          </Route >
+          <Route path='*' component={Login} />
+        </Switch>
+      </main>
+    )
+  }
+  if (isAuthenticated && isLoading) {
+    return <div>The page is loading.  Just a moment.</div>
+  }
+
+  if (isAuthenticated && !isLoading) {
+    return (
+      <main>
+        <div className="App">
+          <NavBar />
+        </div>
+        <Switch>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/sign-up'>
+            <SignUp />
+          </Route>
+          <Route path='/homepage'>
+            <HomePage />
+          </Route>
+          <Route
+            path={'/listing/:id'}
+            render={({ match }) => {
+              return (
+                <ProductPage
+                  id={`${match.params.id}`}
+                  key={`${match.params.id}`}
+                  cookies={cookies}
+                />
+              )
+            }}>
+          </Route>
+          <Route
+            path='/create-new-listing'
+            render={() => {
+              return (
+                <NewListingPage
+                  cookies={cookies}
+                />
+              )
+            }}>
+          </Route>
+          <Route
+            path={'/profile'}
+            render={() => {
+              return (
+                <Profile
+                  cookies={cookies}
+                />
+              )
+            }}>
+          </Route>
+          <Route path='/about'>
+            <UserInfo />
+          </Route>
+        </Switch>
+      </main>
+    );
+  }
+}
+
+export default withCookies(App);
