@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from '@testing-library/react';
-import Login from './Login';
+import MyOffers from './MyOffers';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 

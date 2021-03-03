@@ -1,16 +1,16 @@
 language: node_js
 node_js:
-  - node
+- node
 script:
-  - npm test
-  - npm run build
+- npm test
+- npm run build
 notifications:
   email: false
 deploy:
   provider: heroku
   api_key:
-    secure: f537HtSx6lkMwFP8pK13TGzAf5H1QoJMEWOy9WoiFU/fddX4cPVhoZR6Zahhhx8+3gBX3+znHvgS+EcxVNh2n6k2G5gmvHOkthbnbCPP53gSAMnfG50Zoa7e5NoYBUeq5z6NWu1m2w0x6FQH9cj5EIPRE+OxDZKbROHFUbXT4qtPAgn8/lFY21Hh0HYxuxvWmazvTN7/jI4d1tkUrIDDZb0sQzduBei54RhY1h2OTVXZ45QxeJ6A+aYFw3lykzF4eqZlevUKo6hE+X2XRRbWQNTywPdEXm0pV7fTHLTMXqALxHwFHJGegJeH9zQRWP/mj0OLcH+NrZJ5YdF0aSWCfg9md3EeI+UeK2yeiIKxpGbfNYIBjhFvKnesd0OztPQQ6baALxPdQc1Hue2H4Bg2CGJbUFNL/+xJ7Llwz/eYRnz/YC7qPPlBWlczAzbC6/cFmDlQBd5oYSowocMk7/lLAfD3pmcslVSsJjGxl/YHuRYnM2CckZNSZ0pdywpMLj0PdyCbsn4v2ZE5ETp19vdy86FcoMw3bcUsOXLKGBOMLiDj0CXT3YU4XZSL2xWu3cjPmCdlahtiKcBh7Whb63lFMEUx6VNv5HQKzOdR2QdzeHm0aKWUjok6kyTVNVw+u2BRBBcRPXpZPDnGkxm+XkXNJzT12MP7IklAdgg7H13rc1U=
-  app: garden-share-fe
+    secure: QWtazTcHXI06Mp1TAMvPDa1Fw8ngpWmC+BUMDV1bsJTStngdyFR0PXJL7KuGUEFWd0VQKGya0BMCuW2nLCbAU/5+tNPEeNLkJ9y6ITHE6dVQ9tXbZWwNSnaN4yJBkFrCs2egYI7WWICKTsLrTaVXzXzCBXbR2L86T+F1yTJ6TjSJJ3P/onihTdwCIOH/E8kRSpf+BJPDn6JWmNRqNn4DPgGeR0DKfw8lxb1WrrL4hQpqUDKJaVRKGL2NTwt/36wpYNRZKTJ7Bd5aV60aVNT33a2+8d3jwOGCgo+pZHROKvmiah0AeCUVjPkliVf5sTAbIrZZ26l7pWrjFeBpt4h7fsQkD+Sp5IujhA8QWUt4OTxmT+9396saRsL4rmCq/vYR+v500Db9/K6y5L5APJ2SvduqVzFUyCPUV0zRCvrrVtMnKRwdZlL/a8jlts+6sbm6Ni448HoV8P90+vd5LuXXh5wkmybABMvwnXP1v105ssUWB139hxF/ivRIFYArDf1W/AJpXevTd53h9rjltja5Sq5G7TECtYw7RlIl3RKnicRc3TwaNcUL29CDJExDkPshSFG1QCy9tBHocfb33Mjc2tDtMwZdY7dcVIfaNSRWxHpUwLazINwNQ+P8hZIsHHT4dNEvxNCqatcijMWHZs3gkL8UOWeTtxxvmoTAoyBIRN8=
+  app: garden-share-front-end
   on:
     repo: garden-share-08/garden-share-fe
     branch: main
