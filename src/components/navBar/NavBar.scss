@@ -16,7 +16,8 @@
 }
 
 .logo {
-  height: 4.5em;
+  max-height: 60px;
+  max-width: 120px;
   &:hover {
     border: 2px solid black;
   }
