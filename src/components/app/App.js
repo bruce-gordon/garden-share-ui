@@ -1,9 +1,8 @@
 import './App.scss';
 import React from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import NavBar from '../navBar/NavBar.js';
 import Login from '../login/Login.js'
-import SignUp from '../signUp/SignUp.js'
 import HomePage from '../homePage/HomePage.js'
 import ProductPage from '../productPage/ProductPage.js'
 import NewListingPage from '../newListingPage/NewListingPage.js'
@@ -13,37 +12,42 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { withCookies } from 'react-cookie'
 import './App.scss'
 
-const App = ({cookies}) => {
-  const { isLoading } = useAuth0();
-
-  if (isLoading) {
+const App = ({ cookies }) => {
+  const { isAuthenticated, isLoading } = useAuth0();
+  if (!isAuthenticated) {
+    return (
+      <main>
+        <Switch>
+          < Route path='/login' >
+            <Login />
+          </Route >
+        </Switch>
+      </main>
+    )
+  }
+  if (isAuthenticated && isLoading) {
     return <div>The page is loading.  Just a moment.</div>
   }
 
-  if (!isLoading) {
+  if (isAuthenticated && !isLoading) {
     return (
       <main>
         <div className="App">
           <NavBar />
         </div>
         <Switch>
-          <Route path='/login'>
-            <Login />
-          </Route>
-          <Route path='/sign-up'>
-            <SignUp />
-          </Route>
           <Route path='/homepage'>
             <HomePage />
           </Route>
+          <Redirect from='/login' to='/homepage'/>
           <Route
             path={'/listing/:id'}
-            render={({match}) => {
+            render={({ match }) => {
               return (
                 <ProductPage
-                  id={ `${match.params.id}` }
-                  key={ `${match.params.id}` }
-                  cookies={ cookies }
+                  id={`${match.params.id}`}
+                  key={`${match.params.id}`}
+                  cookies={cookies}
                 />
               )
             }}>
@@ -53,7 +57,7 @@ const App = ({cookies}) => {
             render={() => {
               return (
                 <NewListingPage
-                  cookies={ cookies }
+                  cookies={cookies}
                 />
               )
             }}>
@@ -63,7 +67,7 @@ const App = ({cookies}) => {
             render={() => {
               return (
                 <Profile
-                  cookies={ cookies }
+                  cookies={cookies}
                 />
               )
             }}>

@@ -2,8 +2,6 @@ import React, { useEffect } from 'react'
 import UserOffer from '../userOffer/UserOffer.js'
 import { connect, useDispatch } from 'react-redux'
 import { updateUserOffers } from '../../redux/actions/actions.js';
-import mockUserOffers from '../../mockData/mockUserOffer.js'
-
 
 const MyOffers = ({ userListings, theUser, cookies }) => {
 
