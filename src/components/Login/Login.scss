@@ -1,0 +1,51 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: fantasy;
+}
+
+.welcome-header {
+  margin: 20px 0px 5px 0px;
+}
+
+.logo {
+  margin: 20px 0px 50px 0px; 
+  width: 300px;
+  height: 150px;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0px;
+  width: 300px;
+  height: 300px;
+  border: 2px solid black;
+  background-color: $buttonBrownHover;
+}
+
+.login-header {
+  margin-top: 0px;
+}
+
+.login-button {
+  width: 100px;
+  padding: 0px;
+  @include button($navBarGreen);
+  &:hover {
+    @include button-hover($navBarHover);
+  }
+  &:active {
+    @include button-active($navBarActive);
+  }
+}
