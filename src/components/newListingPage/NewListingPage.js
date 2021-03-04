@@ -20,7 +20,7 @@ const NewListingPage = ({ user, cookies }) => {
       date: data.date
     }
     let cookieId = parseInt(cookies.cookies.userId);
-    dispatch(createListing(cookieId, formattedListing))
+    dispatch(createListing(user.id, formattedListing))
     setNewListings([...newListings, formattedListing])
   }
 
