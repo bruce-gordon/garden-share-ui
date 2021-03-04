@@ -9,7 +9,7 @@ const MyOffers = ({ userListings, theUser, cookies }) => {
 
   useEffect(() => {
     // let cookieId = parseInt(cookies.cookies.userId)
-    dispatch(updateUserOffers(user.id))
+    dispatch(updateUserOffers(theUser.id))
   }, [])
 
   const filterListings = (listings, listingType) => {
