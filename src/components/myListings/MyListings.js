@@ -11,6 +11,7 @@ const MyListings = ({ myListings, user, cookies }) => {
 
   useEffect(() => {
     // let cookieId = parseInt(cookies.cookies.userId)
+    
     dispatch(updateUserListings(user.id))
   }, [])
 
