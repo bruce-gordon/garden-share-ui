@@ -6,7 +6,7 @@ const Logout = () => {
   const { logout } = useAuth0();
 
   return (
-    <button className='logout-button' onClick={() => logout({ returnTo: 'http://localhost:3000/login' })}>
+    <button className='logout-button' onClick={() => logout({ returnTo: 'https://garden-share-front-end.herokuapp.com/' })}>
       Log Out
     </button>
   );
