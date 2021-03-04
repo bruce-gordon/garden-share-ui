@@ -272,8 +272,9 @@ export const updateUserListings = (userId) => {
 
 export const loginUser = (user, isAuthenticated) => {
   return dispatch => {
-    const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
-    axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
+    // const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
+    // axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
+    axios({url: `https://garden-share-be.herokuapp.com/graphql`,
     method: 'post',
     data: {
       query: `

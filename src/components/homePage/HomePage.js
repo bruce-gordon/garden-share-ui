@@ -21,11 +21,10 @@ const HomePage = ({ listingData, gardener }) => {
     dispatch(updateListingData());
   }, [])
 
-  if (!cookies.userId && gardener.user.id) {
-    setCookie("userId", gardener.user.id, { path: "/" });
-  }
 
-  // console.log( cookies.userId )
+  // if ((!cookies.userId && gardener.user.id) || (cookies.userId === "undefined" && gardener.user.id)) {
+  //   setCookie("userId", gardener.user.id, { path: "/" });
+  // }
 
   const combineData = (dataObject) => {
     const dataKeys = Object.keys(dataObject);

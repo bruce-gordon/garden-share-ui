@@ -15,13 +15,13 @@ ReactDOM.render(
     clientId='RuU4p6SrqA2mOiAtzGVQ3QDtCGaS0iKP'
     redirectUri='https://garden-share-front-end.herokuapp.com/homepage'
   >
-    <CookiesProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <CookiesProvider>
         <Provider store={ store }>
             <App />
         </Provider>
-      </BrowserRouter>
-    </CookiesProvider>
+      </CookiesProvider>
+    </BrowserRouter>
   </Auth0Provider>,
   document.getElementById('root')
 );

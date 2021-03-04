@@ -15,19 +15,17 @@ const dispatch = useDispatch()
   }
 
   const acceptOffer = (offerId) => {
-    console.log('accept')
     dispatch(acceptUserOffer(offerId))
     let cookieId = parseInt(cookies.cookies.userId);
-    dispatch(updateUserListings(cookieId))
-    dispatch(updateUserListings(cookieId))
+    dispatch(updateUserListings(user.id))
+    dispatch(updateUserListings(user.id))
   }
 
   const declineOffer = (offerId) => {
-    console.log('decline')
     dispatch(declineUserOffer(offerId))
     let cookieId = parseInt(cookies.cookies.userId);
-    dispatch(updateUserListings(cookieId))
-    dispatch(updateUserListings(cookieId))
+    dispatch(updateUserListings(user.id))
+    dispatch(updateUserListings(user.id))
   }
 
   const filteredOffers = offers.filter(offer => {
@@ -37,7 +35,6 @@ const dispatch = useDispatch()
   const capitalizeLetter = (word) => {
     return word.charAt(0).toUpperCase() + word.slice(1)
   }
-  // console.log('filtered offers', filteredOffers, offers)
 
   const allOffers = filteredOffers.map(offer => {
     return(
