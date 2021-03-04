@@ -7,7 +7,7 @@ const UserInfo = () => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
-  // console.log('UserInfo', user)
+
   return (
     isAuthenticated && (
       <div>
