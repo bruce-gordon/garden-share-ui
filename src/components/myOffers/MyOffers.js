@@ -8,8 +8,8 @@ const MyOffers = ({ userListings, theUser, cookies }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    let cookieId = parseInt(cookies.cookies.userId)
-    dispatch(updateUserOffers(cookieId))
+    // let cookieId = parseInt(cookies.cookies.userId)
+    dispatch(updateUserOffers(theUser.id))
   }, [])
 
   const filterListings = (listings, listingType) => {
