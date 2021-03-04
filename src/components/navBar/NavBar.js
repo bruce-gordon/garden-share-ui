@@ -12,7 +12,7 @@ const NavBar = () => {
         <Link to='/homepage' className='logoLink' data-testid='gardenShareLogo'><img src={GardenShareLogo} className='navbarLogo' /></Link> 
         <Link to='/profile' className='link'>Profile</Link>
         <Link to='/create-new-listing' className='link'>Create New Listing</Link>
-        <Link to='/about' className='link'>About</Link>
+        {/* <Link to='/about' className='link'>About</Link> */}
       </div>
       <Logout />
     </nav>
