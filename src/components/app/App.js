@@ -14,6 +14,7 @@ import './App.scss'
 
 const App = ({ cookies }) => {
   const { isAuthenticated, isLoading } = useAuth0();
+
   if (!isAuthenticated) {
     return (
       <main>

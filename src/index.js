@@ -11,9 +11,9 @@ import { CookiesProvider } from 'react-cookie';
 
 ReactDOM.render(
   <Auth0Provider
-    domain='dev-wbsuhtm2.us.auth0.com'
-    clientId='RuU4p6SrqA2mOiAtzGVQ3QDtCGaS0iKP'
-    redirectUri='https://garden-share-front-end.herokuapp.com/homepage'
+    domain='dev-l5m32l-t.us.auth0.com'
+    clientId='T1lkRoJ1DGqY7DOQeB2ugvmqBfidA0o4'
+    redirectUri='http://localhost:3000/homepage'
   >
     <BrowserRouter>
       <CookiesProvider>
@@ -26,7 +26,5 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();

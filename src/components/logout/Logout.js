@@ -8,9 +8,8 @@ const Logout = () => {
   const [cookies, setCookie, removeCookie] = useCookies()
 
   const removeUser = () => {
-
     removeCookie('userId')
-    logout({ returnTo: 'https://garden-share-front-end.herokuapp.com/' })
+    logout({ returnTo: 'http://localhost:3000/' })
   }
 
   return (
