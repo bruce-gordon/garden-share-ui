@@ -7,6 +7,20 @@
   align-items: center;
 }
 
+@mixin listing ($padding, $color, $margin, $flex, $borderInfo) {
+  padding: $padding;
+  background: $color;
+  margin: $margin;
+  display: flex;
+  flex-direction: $flex;
+  border: $borderInfo
+}
+
+@mixin pageLayout ($color) {
+  padding: 1em;
+  background: $color;
+}
+
 @mixin button-hover($hoverColor) {
   background-color: $hoverColor;
   color: rgb(255, 255, 255);
@@ -50,7 +64,6 @@
 @mixin flexRow() {
   display: flex;
   justify-content: center;
-  // align-items: center;
 }
 
 @mixin subSection() {

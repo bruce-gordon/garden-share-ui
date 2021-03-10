@@ -5,7 +5,7 @@ import { connect, useDispatch } from 'react-redux'
 import { createListing } from '../../redux/actions/actions.js'
 import { cookies } from 'react-cookie';
 
-const NewListingPage = ({ user, cookies }) => {
+const NewListingPage = ({ user, newestListing, cookies }) => {
 
   const [newListings, setNewListings] = useState([])
   const dispatch = useDispatch()
@@ -21,16 +21,17 @@ const NewListingPage = ({ user, cookies }) => {
     }
     let cookieId = parseInt(cookies.cookies.userId);
     dispatch(createListing(user.id, formattedListing))
-    setNewListings([...newListings, formattedListing])
+    console.log(newestListing)
+    setNewListings([...newListings, newestListing])
   }
 
   const userListings = newListings.map(listing => {
     return(
-      <div className='new-listing-card'>
-        <h3 className='cardHeader'>{ listing.itemName }</h3>
-        <p>Type: <i>{ listing.itemType }</i></p>
+      <div key={ listing.id } className='new-listing-card'>
+        <h3 className='cardHeader'>{ listing.produceName }</h3>
+        <p>Type: <i>{ listing.produceType }</i></p>
         <p>{ listing.quantity } { listing.unit }</p>
-        <p>{ listing.date }</p>
+        <p>{ listing.dateHarvested }</p>
     </div>
     )
   })
@@ -56,6 +57,7 @@ const mapDispatchToProps = dispatch => ({
 function newListingPageState(state, ownProps) {
   return {
     user: state.user.user,
+    newestListing: state.userListings.newListing,
     cookies: ownProps.cookies
   }
 }

@@ -2,22 +2,19 @@
 @import '../../sass/variables';
 
 .listing-section {
-  border: 2px solid black;
-  padding: 1em;
-  background: $white;
+  @include listing(1em, $gray, 0 0 1em 0, column, 2px solid black)
+  justify-content: center;
+  align-items: center;
 }
 
 .user-listing {
-  padding: .5em;
-  display: flex;
-  flex-direction: row;
+  @include listing(.5em, $lightGreen, .5em 0, row, 2px solid $white)
   justify-content: space-around;
-  background: $lightGreen;
-  margin: .5em 0;
+  width: 95%;
 }
 
 .listing-offer {
-  border-top: 2px solid green;
+  // border-top: 2px solid green;
   border-bottom: 2px solid green;
   padding: .5em;
   display: flex;
@@ -29,11 +26,9 @@
 }
 
 .listing-offer-section {
-  display: flex;
-  justify-content: center;
-  background: $white;
-  border-radius: 25px;
-  overflow: scroll;
+  @include listing(auto, $white, auto, column, none)
+  align-items: center;
+  width: 90%;
 }
 
 .offer-options {
@@ -57,7 +52,8 @@ text-align: center;
 
 .section-heading {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 1em;
+  border-bottom: 1px solid $navBarGreen;
 }
 
 .sub-section {
