@@ -13,6 +13,12 @@ const userListings = (state = userListingsInitialState, action) => {
         error: action.error
       }
 
+    case 'CLEAR_NEW':
+      return {
+        ...state,
+        newListings: []
+      }
+
     case 'GET_USER_LISTINGS':
       return {
         ...state,

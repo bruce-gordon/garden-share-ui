@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './NewListingPage.scss';
 import Form from '../form/Form.js';
 import { connect, useDispatch } from 'react-redux'
-import { createListing } from '../../redux/actions/actions.js'
+import { createListing, clearNewListings } from '../../redux/actions/actions.js'
 import { cookies } from 'react-cookie';
 
 const NewListingPage = ({ user, addedListings, cookies }) => {
 
-  const [newListings, setNewListings] = useState([])
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(clearNewListings());
+  }, [])
+  // const [newListings, setNewListings] = useState([])
 
   const makeListing = (data) => {
     const formattedListing = {
@@ -49,7 +53,8 @@ const NewListingPage = ({ user, addedListings, cookies }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  createListing: (userId, listing) => dispatch(createListing(userId, listing))
+  createListing: (userId, listing) => dispatch(createListing(userId, listing)),
+  clearNewListings: () => dispatch(clearNewListings())
 })
 
 function newListingPageState(state, ownProps) {

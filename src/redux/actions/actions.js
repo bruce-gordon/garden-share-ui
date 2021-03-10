@@ -109,6 +109,14 @@ export const createListing = (userId, listing) => {
   }
 }
 
+export const clearNewListings = () => {
+  return dispatch => {
+    dispatch ({
+      type: 'CLEAR_NEW'
+    })
+  }
+}
+
 export const clearOffer = () => {
   return dispatch => {
     dispatch ({
