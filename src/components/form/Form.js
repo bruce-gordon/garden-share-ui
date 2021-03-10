@@ -15,8 +15,16 @@ const Form = ({ submitFunc }) => {
   // const [isComplete, setIsComplete] = useState(false);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    submitFunc(state)
+    e.preventDefault();
+    submitFunc(state);
+    setState({
+      itemName: '',
+      itemType: '',
+      description: '',
+      quantity: '',
+      unit: '',
+      date: ''
+    })
   }
 
   const handleChange = async (e) => {
