@@ -1,6 +1,10 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
+.form {
+  margin-bottom: 10em;
+}
+
 .form-items {
   border: 3px solid black;
   display: flex;
