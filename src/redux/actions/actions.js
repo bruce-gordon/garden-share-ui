@@ -224,6 +224,7 @@ export const updateUserOffers = (userId) => {
 
 export const updateUserListings = (userId) => {
   return dispatch => {
+    console.log('test')
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({ url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
     method: 'post',
@@ -268,6 +269,7 @@ export const updateUserListings = (userId) => {
     }
     })
     .then((response) => {
+      console.log(response)
       if (response.status === 200) {
         dispatch({
           type: 'GET_USER_LISTINGS',
@@ -314,7 +316,7 @@ export const loginUser = (user, isAuthenticated) => {
   }
 }
 
-export const acceptUserOffer = (offerId) => {
+export const acceptUserOffer = (offerId, userId) => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
@@ -339,6 +341,9 @@ export const acceptUserOffer = (offerId) => {
         }
       }`
     }})
+    .then(() => {
+      dispatch(updateUserListings(userId))
+    })
     // .then((response) => {
     //   if (response.status === 200) {
     //     dispatch ({

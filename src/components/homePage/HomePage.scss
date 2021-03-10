@@ -1,6 +1,11 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
+.loading {
+  text-align: center;
+  margin: 1em;
+}
+
 .filter {
   display: flex;
   justify-content: center;
