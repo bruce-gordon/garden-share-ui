@@ -224,7 +224,6 @@ export const updateUserOffers = (userId) => {
 
 export const updateUserListings = (userId) => {
   return dispatch => {
-    console.log('test')
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({ url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
     method: 'post',
@@ -269,7 +268,6 @@ export const updateUserListings = (userId) => {
     }
     })
     .then((response) => {
-      console.log(response)
       if (response.status === 200) {
         dispatch({
           type: 'GET_USER_LISTINGS',
@@ -344,21 +342,10 @@ export const acceptUserOffer = (offerId, userId) => {
     .then(() => {
       dispatch(updateUserListings(userId))
     })
-    // .then((response) => {
-    //   if (response.status === 200) {
-    //     dispatch ({
-    //       type: 'ACCEPT_OFFER',
-    //       data: response.data.data.acceptOffer.listing,
-    //       error: response.data.data.acceptOffer.error
-    //     })
-    //   } else {
-    //     console.error(response)
-    //   }
-    // })
   }
 }
 
-export const declineUserOffer = (offerId) => {
+export const declineUserOffer = (offerId, userId) => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
@@ -380,16 +367,8 @@ export const declineUserOffer = (offerId) => {
         }
       }`
     }})
-    // .then((response) => {
-    //   if (response.status === 200) {
-    //     dispatch ({
-    //       type: 'DECLINE_OFFER',
-    //       data: response.data.data.declineOffer.listing,
-    //       error: response.data.data.declineOffer.error
-    //     })
-    //   } else {
-    //     console.error(response)
-    //   }
-    // })
+    .then(() => {
+      dispatch(updateUserListings(userId))
+    })
   }
 }
