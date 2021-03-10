@@ -6,6 +6,7 @@
   flex-direction: row;
   justify-content: space-around;
   padding: 1em;
+  background: $gray;
 }
 
 .product-header {
@@ -15,9 +16,9 @@
 
 .product-text-container {
   padding: 1em;
-  border: 2px solid green;
+  border: 2px solid $green;
   margin-bottom: 1em;
-  background: $gray;
+  background: $white;
 }
 
 .offer-portion {
@@ -36,6 +37,8 @@
   align-items: center;
   margin-bottom: 1em;
   color: $navBarGreen;
-  background: $gray;
+  border: 2px solid $green;
+
+  background: $white;
   padding: 1em;
 }
