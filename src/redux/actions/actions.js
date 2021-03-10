@@ -80,6 +80,7 @@ export const createListing = (userId, listing) => {
           unit: "${listing.unit}",
           dateHarvested: "${listing.date}"}) {
             listing {
+              id
               zipCode
               produceName
               produceType

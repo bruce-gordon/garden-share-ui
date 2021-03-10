@@ -1,6 +1,6 @@
 const userListingsInitialState = {
   listings: [],
-  newListing: {},
+  newListings: [],
   error: []
 }
 
@@ -9,7 +9,7 @@ const userListings = (state = userListingsInitialState, action) => {
     case 'CREATE_LISTING':
       return {
         ...state,
-        newListing: action.data,
+        newListings: [...state.newListings, action.data],
         error: action.error
       }
 
