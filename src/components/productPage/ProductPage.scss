@@ -9,6 +9,9 @@
   background: $gray;
 }
 
+.listing-portion {
+  width: 50%;
+}
 .product-header {
   margin: .5em 0;
   text-align: center;
@@ -19,6 +22,21 @@
   border: 2px solid $green;
   margin-bottom: 1em;
   background: $white;
+}
+
+.product-image-area {
+  // width: 50%;
+  margin-left: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+}
+
+.product-image {
+  object-fit: contain;
+  overflow: hidden;
+  border: 2px solid $navBarGreen;
 }
 
 .offer-portion {

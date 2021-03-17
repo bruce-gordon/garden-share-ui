@@ -63,6 +63,7 @@ export const updateProductPageData = (id) => {
 }
 
 export const createListing = (userId, listing) => {
+  console.log(userId, listing)
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
@@ -96,6 +97,7 @@ export const createListing = (userId, listing) => {
     }
     })
     .then(response => {
+      console.log(response)
       if (response.status === 200) {
         dispatch({
           type: "CREATE_LISTING",

@@ -1,27 +1,41 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
-.productCard {
+.produce-details {
+  width: 50%;
+}
+
+.image-area {
+  width: 50%;
+  margin-left: 1em;
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  align-items: center;
+  object-fit: contain;
+}
+
+.image-product {
+  object-fit: contain;
+  overflow: hidden;
+  border: 2px solid $navBarGreen;
+}
+
+.product-link {
+  display: flex;
+  justify-content: center;
   border: 3px solid black;
   padding: 1em;
   height: 10em;
-  width: 15em;
+  width: 25em;
   margin: 1em;
   background: $lightGreen;
   text-decoration: none;
+  color: black;
   &:hover {
     background: $green;
     color: $white;
     border: 3px solid $lightGreen;
   }
-}
-
-.product-text {
-  text-decoration: none;
-  color: black;
 }
 
 .cardHeader {
