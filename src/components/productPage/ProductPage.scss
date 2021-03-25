@@ -6,7 +6,8 @@
   flex-direction: row;
   justify-content: space-around;
   padding: 1em;
-  background: $gray;
+  background: $navBarHover;
+  color: $white;
 }
 
 .listing-portion {
@@ -19,9 +20,10 @@
 
 .product-text-container {
   padding: 1em;
-  border: 2px solid $green;
+  border: 3px solid black;
   margin-bottom: 1em;
   background: $white;
+  color: black;
 }
 
 .product-image-area {
@@ -49,13 +51,10 @@
 }
 
 .recent-offer {
+  @include formResults();
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1em;
-  color: $navBarGreen;
-  border: 2px solid $green;
 
-  background: $white;
-  padding: 1em;
 }

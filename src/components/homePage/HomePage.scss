@@ -13,8 +13,8 @@
 }
 
 .homepage {
-  background: $gray;
-  padding: 1em;
+  @include pageLayout($navBarGreen)
+  color: $white;
 }
 
 label {
@@ -24,7 +24,8 @@ label {
 .homepage-header {
   text-align: center;
   margin-top: 0;
-  background: $gray;
+  background: $navBarGreen;
+  color: $white;
 
 }
 

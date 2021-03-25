@@ -61,6 +61,21 @@
   height: fit-content;
 }
 
+@mixin myListings($color) {
+  padding: 1em;
+  border: 2px solid green;
+  margin-bottom: 1em;
+  background: $color;
+}
+
+@mixin formResults() {
+  padding: 1em;
+  border: 2px solid $navBarGreen;
+  margin: 1em;
+  background: $white;
+  color: $navBarGreen;
+}
+
 @mixin flexRow() {
   display: flex;
   justify-content: center;

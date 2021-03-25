@@ -2,13 +2,11 @@
 @import '../../sass/variables';
 
 .login {
-  display: flex;
+  @include flexRow();
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  // font-family: fantasy;
 }
 
 .welcome-header {
@@ -22,9 +20,8 @@
 }
 
 .login-container {
-  display: flex;
+  @include flexRow();
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 0px;

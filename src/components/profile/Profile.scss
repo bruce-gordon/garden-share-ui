@@ -2,7 +2,8 @@
 @import '../../sass/variables';
 
 .profile-page {
-  @include pageLayout($gray);
+  @include pageLayout($navBarGreen);
+
 }
 
 .button-selected {
@@ -35,4 +36,5 @@
 .user-name {
   margin: .5em 0;
   text-align: center;
+  color: $white;
 }
