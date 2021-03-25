@@ -15,6 +15,7 @@
 .homepage {
   @include pageLayout($navBarGreen)
   color: $white;
+  min-height: 50em;
 }
 
 label {
