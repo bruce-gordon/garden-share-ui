@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Form.scss'
+import dropdownData from '../../formOptions/optionData.js'
 
 const Form = ({ submitFunc }) => {
 
@@ -12,19 +13,23 @@ const Form = ({ submitFunc }) => {
     date: ''
   });
 
-  // const [isComplete, setIsComplete] = useState(false);
-
   const handleSubmit = (e) => {
-    e.preventDefault()
-    submitFunc(state)
+    e.preventDefault();
+    submitFunc(state);
+    setState({
+      itemName: '',
+      itemType: '',
+      description: '',
+      quantity: '',
+      unit: '',
+      date: ''
+    })
   }
 
   const handleChange = async (e) => {
     await setState({ ...state, [e.target.name]: e.target.value });
     checkCompletion();
   }
-
-  // const isComplete = (state.itemName && state.itemType && state.description && state.quantity && state.unit && state.date);
 
   const checkCompletion = () => {
     if (state.itemName && state.itemType && state.description && state.quantity && state.unit && state.date) {
@@ -38,6 +43,12 @@ const Form = ({ submitFunc }) => {
     return checkCompletion() ? 'submit-button' : 'disabled-button'
   }
 
+  const formOptions = dropdownData.map(dropdown => {
+    return (
+      <option key={ dropdown.id } value={ dropdown.option }>{ dropdown.option }</option>
+    )
+  })
+
   return (
     <div className='form'>
       <form className='form-items'>
@@ -45,28 +56,7 @@ const Form = ({ submitFunc }) => {
           <option value=''>
             Select Item
           </option>
-          <option value='Apples'>Apples</option>
-          <option value='Apricots'>Apricots</option>
-          <option value='Asparagus'>Asparagus</option>
-          <option value='Beans'>Beans</option>
-          <option value='Broccoli'>Broccoli</option>
-          <option value='Cabbage'>Cabbage</option>
-          <option value='Carrots'>Carrots</option>
-          <option value='Cauliflower'>Cauliflower</option>
-          <option value='Celery'>Celery</option>
-          <option value='Corn'>Corn</option>
-          <option value='Kale'>Kale</option>
-          <option value='Lettuce'>Lettuce</option>
-          <option value='Onions'>Onions</option>
-          <option value='Peaches'>Peaches</option>
-          <option value='Peas'>Peas</option>
-          <option value='Peppers'>Peppers</option>
-          <option value='Potatoes'>Potatoes</option>
-          <option value='Radishes'>Radishes</option>
-          <option value='Rhubarb'>Rhubarb</option>
-          <option value='Squash'>Squash</option>
-          <option value='Strawberries'>Strawberries</option>
-          <option value='Tomatoes'>Tomatoes</option>
+          { formOptions }
         </select>
         <input className='form-space' type='text' placeholder='Type' value={ state.itemType } name='itemType' onChange={ handleChange } />
         <input className='form-space' type='text' placeholder='Description' value={ state.description } name='description' onChange={ handleChange } />

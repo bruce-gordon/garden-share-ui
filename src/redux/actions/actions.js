@@ -63,6 +63,7 @@ export const updateProductPageData = (id) => {
 }
 
 export const createListing = (userId, listing) => {
+  console.log(userId, listing)
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
@@ -80,6 +81,7 @@ export const createListing = (userId, listing) => {
           unit: "${listing.unit}",
           dateHarvested: "${listing.date}"}) {
             listing {
+              id
               zipCode
               produceName
               produceType
@@ -95,6 +97,7 @@ export const createListing = (userId, listing) => {
     }
     })
     .then(response => {
+      console.log(response)
       if (response.status === 200) {
         dispatch({
           type: "CREATE_LISTING",
@@ -104,6 +107,14 @@ export const createListing = (userId, listing) => {
       } else {
         console.error(response)
       }
+    })
+  }
+}
+
+export const clearNewListings = () => {
+  return dispatch => {
+    dispatch ({
+      type: 'CLEAR_NEW'
     })
   }
 }
@@ -305,7 +316,7 @@ export const loginUser = (user, isAuthenticated) => {
   }
 }
 
-export const acceptUserOffer = (offerId) => {
+export const acceptUserOffer = (offerId, userId) => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
@@ -330,21 +341,13 @@ export const acceptUserOffer = (offerId) => {
         }
       }`
     }})
-    // .then((response) => {
-    //   if (response.status === 200) {
-    //     dispatch ({
-    //       type: 'ACCEPT_OFFER',
-    //       data: response.data.data.acceptOffer.listing,
-    //       error: response.data.data.acceptOffer.error
-    //     })
-    //   } else {
-    //     console.error(response)
-    //   }
-    // })
+    .then(() => {
+      dispatch(updateUserListings(userId))
+    })
   }
 }
 
-export const declineUserOffer = (offerId) => {
+export const declineUserOffer = (offerId, userId) => {
   return dispatch => {
     const proxyUrl = 'https://pure-hollows-05817.herokuapp.com/'
     axios({url: `${proxyUrl}https://garden-share-be.herokuapp.com/graphql`,
@@ -366,16 +369,8 @@ export const declineUserOffer = (offerId) => {
         }
       }`
     }})
-    // .then((response) => {
-    //   if (response.status === 200) {
-    //     dispatch ({
-    //       type: 'DECLINE_OFFER',
-    //       data: response.data.data.declineOffer.listing,
-    //       error: response.data.data.declineOffer.error
-    //     })
-    //   } else {
-    //     console.error(response)
-    //   }
-    // })
+    .then(() => {
+      dispatch(updateUserListings(userId))
+    })
   }
 }

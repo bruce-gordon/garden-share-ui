@@ -5,7 +5,7 @@ import MyOffers from '../myOffers/MyOffers.js'
 import { cookies } from 'react-cookie';
 import { connect } from 'react-redux'
 
-const Profile = ({ cookies }) => {
+const Profile = ({ user, cookies }) => {
 
   const [view, setView] = useState(true)
 
@@ -27,7 +27,7 @@ const Profile = ({ cookies }) => {
 
   return (
     <div className='profile-page'>
-      <h2 className='user-name'>User Name</h2>
+      <h2 className='user-name'>Welcome {user.firstName}</h2>
       <div className='button-container'>
         <button className={ highlightMyListings() } onClick={ handleClick }>My Listings</button>
         <button className={ highlightMyOffers() } onClick={ handleClick }>My Offers</button>
@@ -42,10 +42,11 @@ const Profile = ({ cookies }) => {
   )
 }
 
-function profileState(ownProps) {
+function profileState(state, ownProps) {
   return {
+    user: state.user.user,
     cookies: ownProps.cookies
   }
 }
 
-export default connect()(Profile);
+export default connect(profileState)(Profile);

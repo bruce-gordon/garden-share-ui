@@ -2,28 +2,29 @@
 @import '../../sass/variables';
 
 .profile-page {
-  padding: 1em;
+  @include pageLayout($navBarGreen);
+
 }
 
 .button-selected {
-  @include button(#c1997b);
+  @include button($buttonBrownHover);
   margin: 1em;
   &:hover {
-    @include button-hover(#c1997b);
+    @include button-hover($buttonBrownHover);
   }
   &:active {
-    @include button-active(#ddbca3);
+    @include button-active($buttonBrownActive);
   }
 }
 
 .profile-button {
-  @include button(#8F7068);
+  @include button($buttonBrown);
   margin: 1em;
   &:hover {
-    @include button-hover(#c1997b);
+    @include button-hover($buttonBrownHover);
   }
   &:active {
-    @include button-active(#ddbca3);
+    @include button-active($buttonBrownActive);
   }
 }
 
@@ -35,4 +36,5 @@
 .user-name {
   margin: .5em 0;
   text-align: center;
+  color: $white;
 }

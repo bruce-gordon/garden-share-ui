@@ -10,9 +10,11 @@
 }
 
 .navOptions {
+  @include nav();
   display: flex;
   align-content: center;
   height: 5em;
+  width: 35%;
 }
 
 .navbarLogo {
@@ -24,10 +26,6 @@
   &:hover {
     border: 2px solid black;
   }
-}
-.navOptions {
-  @include nav();
-  width: 40%;
 }
 
 .link{

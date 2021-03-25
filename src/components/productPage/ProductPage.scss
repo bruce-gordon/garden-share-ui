@@ -6,8 +6,13 @@
   flex-direction: row;
   justify-content: space-around;
   padding: 1em;
+  background: $navBarHover;
+  color: $white;
 }
 
+.listing-portion {
+  width: 50%;
+}
 .product-header {
   margin: .5em 0;
   text-align: center;
@@ -15,9 +20,24 @@
 
 .product-text-container {
   padding: 1em;
-  border: 2px solid green;
+  border: 3px solid black;
   margin-bottom: 1em;
-  background: $gray;
+  background: $white;
+  color: black;
+}
+
+.product-image-area {
+  margin-left: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+}
+
+.product-image {
+  object-fit: contain;
+  overflow: hidden;
+  border: 2px solid $navBarGreen;
 }
 
 .offer-portion {
@@ -31,11 +51,10 @@
 }
 
 .recent-offer {
+  @include formResults();
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1em;
-  color: $navBarGreen;
-  background: $gray;
-  padding: 1em;
+
 }

@@ -5,10 +5,10 @@ import { useCookies } from 'react-cookie';
 
 const Logout = () => {
   const { logout } = useAuth0();
-  const [cookies, setCookie, removeCookie] = useCookies()
+  const [cookies, setCookie, removeCookie] = useCookies(['userId'])
 
   const removeUser = () => {
-    removeCookie('userId')
+    removeCookie("userId", { path: "/" })
     logout({ returnTo: 'http://localhost:3000/' })
   }
 

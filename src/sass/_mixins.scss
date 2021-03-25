@@ -7,6 +7,20 @@
   align-items: center;
 }
 
+@mixin listing ($padding, $color, $margin, $flex, $borderInfo) {
+  padding: $padding;
+  background: $color;
+  margin: $margin;
+  display: flex;
+  flex-direction: $flex;
+  border: $borderInfo
+}
+
+@mixin pageLayout ($color) {
+  padding: 1em;
+  background: $color;
+}
+
 @mixin button-hover($hoverColor) {
   background-color: $hoverColor;
   color: rgb(255, 255, 255);
@@ -47,10 +61,24 @@
   height: fit-content;
 }
 
+@mixin myListings($color) {
+  padding: 1em;
+  border: 2px solid green;
+  margin-bottom: 1em;
+  background: $color;
+}
+
+@mixin formResults() {
+  padding: 1em;
+  border: 2px solid $navBarGreen;
+  margin: 1em;
+  background: $white;
+  color: $navBarGreen;
+}
+
 @mixin flexRow() {
   display: flex;
   justify-content: center;
-  // align-items: center;
 }
 
 @mixin subSection() {

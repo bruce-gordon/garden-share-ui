@@ -1,6 +1,11 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
+.loading {
+  text-align: center;
+  margin: 1em;
+}
+
 .filter {
   display: flex;
   justify-content: center;
@@ -8,8 +13,9 @@
 }
 
 .homepage {
-  background: $gray;
-  padding-top: 1em;
+  @include pageLayout($navBarGreen)
+  color: $white;
+  min-height: 50em;
 }
 
 label {
@@ -19,7 +25,8 @@ label {
 .homepage-header {
   text-align: center;
   margin-top: 0;
-  background: $gray;
+  background: $navBarGreen;
+  color: $white;
 
 }
 

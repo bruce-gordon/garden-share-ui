@@ -11,7 +11,7 @@ const Login = () => {
       <h1 className='welcome-header'>Welcome To</h1>
       <img className='logo' src={GardenShareLogo} />
       <div className='login-container'>
-        <h2 className='login-header'>To Access Garden Share Please Log In</h2>
+        <h2 className='login-header'>Please Log In to Access Garden Share</h2>
         <button className='login-button' onClick={ () => loginWithRedirect() }>
           Log In
         </button>

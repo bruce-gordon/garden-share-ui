@@ -5,6 +5,7 @@ import { updateProductPageData, createOffer, clearOffer } from '../../redux/acti
 import { connect, useDispatch } from 'react-redux'
 import { useAuth0 } from '@auth0/auth0-react'
 import { cookies } from 'react-cookie';
+import dropdownData from '../../formOptions/optionData.js'
 
 const ProductPage = ({ id, theUser, product, offer, cookies }) => {
 
@@ -31,7 +32,7 @@ const ProductPage = ({ id, theUser, product, offer, cookies }) => {
       date: offer.date
     }
     let cookieId = parseInt(cookies.cookies.userId);
-    dispatch(createOffer(id, theUser.id, formattedOffer));
+    dispatch(createOffer(parseInt(id), cookieId, formattedOffer));
   }
 
   const formatDate = (inputdate) => {
@@ -53,21 +54,31 @@ const ProductPage = ({ id, theUser, product, offer, cookies }) => {
     }
   }
 
+  const productImage = (produceName) => {
+    let match = dropdownData.find(dropdown => {
+      return dropdown.option === produceName
+    });
+    return match.image
+  }
+
   if (product.produceType) {
     return (
       <div className='product-page'>
         <div className='listing-portion'>
           <h2 className='product-header'>{capitalizeLetter(product.produceType)} {product.produceName}</h2>
-          <div className='product-text-container'>
+          <section className='product-text-container'>
             <p><b>Amount Available:</b> { product.quantity } { product.unit }</p>
             <p><b>Description:</b> { product.description }</p>
             <p><b>Grown by:</b> { product.user.firstName }</p>
             <p><b>Harvested on:</b> { formatDate(product.dateHarvested) }</p>
             <p><b>Zip Code:</b> { product.zipCode }</p>
-          </div>
+            <div className='product-image-area'>
+              <img className='product-image' src={ productImage(product.produceName) } />
+            </div>
+          </section>
         </div>
         <div className='offer-portion'>
-          <h3>Complete This Form to Make an Offer</h3>
+          <h2>Complete This Form to Make an Offer</h2>
           { confirmOffer() }
           <Form
             submitFunc={ makeOffer }

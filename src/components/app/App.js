@@ -32,7 +32,7 @@ const App = ({ cookies }) => {
 
   if (isAuthenticated && !isLoading) {
     return (
-      <main>
+      <main className='main'>
         <div className="App">
           <NavBar />
         </div>

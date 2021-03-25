@@ -21,7 +21,7 @@ const UserOffer = ({ id, updatedAt, produceName, produceType, quantity, unit, st
       <div
         className='listing-offer'
         id={ id }
-        key={ id + index }
+        key={ index + id }
       >
         <div className='sub-section' id={ id }>
           <p className='sub-heading'>Date Posted</p>
