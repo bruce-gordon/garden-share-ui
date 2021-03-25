@@ -32,7 +32,7 @@ const dropdownData = [
   {
     id: 5,
     option: 'Onions',
-    image: 'https://food.fnr.sndimg.com/content/dam/images/food/fullset/2020/08/10/fn_red-onions-getty_s4x3.jpg.rend.hgtvcom.616.462.suffix/1597096320410.jpeg'
+    image: 'https://www.thespruceeats.com/thmb/6cwV9TyHpWlQe7eJkN_5ST6JlGI=/2115x1190/smart/filters:no_upscale()/Types-of-Onions-58abd31d5f9b58a3c981ab13.jpg'
   },
   {
     id: 7,
