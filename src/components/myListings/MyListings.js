@@ -10,8 +10,8 @@ const MyListings = ({ myListings, user, cookies }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // let cookieId = parseInt(cookies.cookies.userId)
-    dispatch(updateUserListings(user.id))
+    let cookieId = parseInt(cookies.cookies.userId)
+    dispatch(updateUserListings(cookieId))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -22,7 +22,8 @@ const MyListings = ({ myListings, user, cookies }) => {
     })
   }
 
-  const openListings = filterListings(myListings, 'pending').map(listing => {
+  const openListings = filterListings(myListings, 'pending').map((listing, index) => {
+    let key = (listing.id + index)
     return (
       <UserListing
         id={ listing.id }

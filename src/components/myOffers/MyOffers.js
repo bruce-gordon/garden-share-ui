@@ -8,8 +8,8 @@ const MyOffers = ({ userListings, theUser, cookies }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // let cookieId = parseInt(cookies.cookies.userId)
-    dispatch(updateUserOffers(theUser.id))
+    let cookieId = parseInt(cookies.cookies.userId)
+    dispatch(updateUserOffers(cookieId))
   }, [])
 
   const filterListings = (listings, listingType) => {
@@ -21,10 +21,12 @@ const MyOffers = ({ userListings, theUser, cookies }) => {
   }
 
   const openListings = filterListings(userListings, 'pending').map((listing, index) => {
+    let key = (index + Date.now())
+    console.log(key)
     return (
       <UserOffer
         id={ listing.id }
-        key={ listing.id + index }
+        key={ key }
         updatedAt={ listing.updatedAt }
         produceType={ listing.produceType }
         produceName={ listing.produceName }
@@ -39,10 +41,12 @@ const MyOffers = ({ userListings, theUser, cookies }) => {
   })
 
   const acceptedListings = filterListings(userListings, 'accepted').map((listing, index) => {
+    let key = (index + Date.now())
+    console.log(key)
     return (
       <UserOffer
         id={ listing.id }
-        key={ listing.id + index }
+        key={ key }
         updatedAt={ listing.updatedAt }
         produceType={ listing.produceType }
         produceName={ listing.produceName }

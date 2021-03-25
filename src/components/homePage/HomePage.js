@@ -22,9 +22,9 @@ const HomePage = ({ listingData, gardener }) => {
   }, [])
 
 
-  // if ((!cookies.userId && gardener.user.id) || (cookies.userId === "undefined" && gardener.user.id)) {
-  //   setCookie("userId", gardener.user.id, { path: "/" });
-  // }
+  if ((!cookies.userId && gardener.user.id) || (cookies.userId === "undefined" && gardener.user.id)) {
+    setCookie("userId", gardener.user.id, { path: "/" });
+  }
 
   const combineData = (dataObject) => {
     const dataKeys = Object.keys(dataObject);
@@ -109,7 +109,7 @@ const HomePage = ({ listingData, gardener }) => {
       </div>
     )
   } else {
-    return (<h1 className='loading'>Loading...</h1>)
+    return (<h1 className='loading'>There are currently no listings in your area.  Click "Create New Listing" to get started!</h1>)
   }
 }
 

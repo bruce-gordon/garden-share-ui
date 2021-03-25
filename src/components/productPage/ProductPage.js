@@ -32,7 +32,7 @@ const ProductPage = ({ id, theUser, product, offer, cookies }) => {
       date: offer.date
     }
     let cookieId = parseInt(cookies.cookies.userId);
-    dispatch(createOffer(parseInt(id), theUser.id, formattedOffer));
+    dispatch(createOffer(parseInt(id), cookieId, formattedOffer));
   }
 
   const formatDate = (inputdate) => {

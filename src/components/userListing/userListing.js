@@ -15,13 +15,13 @@ const dispatch = useDispatch()
   }
 
   const acceptOffer = (offerId) => {
-    dispatch(acceptUserOffer(offerId, user.id))
     let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(acceptUserOffer(offerId, cookieId))
   }
 
   const declineOffer = (offerId) => {
-    dispatch(declineUserOffer(offerId, user.id))
     let cookieId = parseInt(cookies.cookies.userId);
+    dispatch(declineUserOffer(offerId, cookieId))
   }
 
   const filteredOffers = offers.filter(offer => {
