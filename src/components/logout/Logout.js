@@ -9,7 +9,7 @@ const Logout = () => {
 
   const removeUser = () => {
     removeCookie("userId", { path: "/" })
-    logout({ returnTo: 'http://localhost:3000/' })
+    logout({ returnTo: 'https://garden-share-ui.herokuapp.com/' })
   }
 
   return (
