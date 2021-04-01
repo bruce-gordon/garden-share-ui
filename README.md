@@ -4,9 +4,9 @@
 
 This repository represents the frontend portion of a capstone project for the Turing School of Software & Design.
 
-Garden-Share is an application designed to function as a produce swap meet...
+Garden-Share is an application designed to function as an informal marketplace to barter and exchange homegrown produce.
 
-All of the repositories that make up this project can be found [here](https://github.com/garden-share-08)
+The repository for the backend server can be found [here](https://github.com/garden-share-08/garden-share-be)
 
 ## Table of Contents
   - [Design](#design)
@@ -18,11 +18,11 @@ All of the repositories that make up this project can be found [here](https://gi
 
 ### Design
 
-Garden-Share utilizes a service-orriented architecture to ensure future scalability.
+Garden-Share utilizes a service-oriented architecture to ensure future scalability.
 
 The back-end is written primarily in Ruby on Rails/GrahphQL and deployed via [Heroku](https://garden-share-be.herokuapp.com/)
 
-The front-end is written primarily in JavaScript/Node.js and is deployed via [Heroku](FE URL Needed!)
+The front-end is written primarily in JavaScript/Node.js and is deployed via [Heroku](https://garden-share-ui.herokuapp.com/)
 
 The microservice is written primarily in Python/Flask and is deployed via [Heroku](https://gardeen-location-microservice.herokuapp.com/)
 
@@ -60,12 +60,19 @@ Run the test suite with `npm test`
 
 For local deployment run your development server with `npm start` and visit [localhost:3000](http://localhost:3000) to see the app in action.
 
-[Garden Share](https://garden-share-be.herokuapp.com/) is deployed remotely via Heroku
+[Garden Share](https://garden-share-ui.herokuapp.com/) is deployed remotely via Heroku
 
-### Authors
-  - **Aaron Townsend** - *Turing Student* - [GitHub Profile](https://github.com/atownse) - [LinkedIn](https://www.linkedin.com/in/aaron-townsend-667604176/)
-  - **Bruce Gordon** - *Turing Student* - [GitHub Profile](https://github.com/bruce-gordon) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/bruce-gordon) - [LinkedIn](https://www.linkedin.com/in/brucemgordon/)
-  - **Chadrick Dickerson** - *Turing Student* - [GitHub Profile](https://github.com/chadrick-d-dev) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/chadrick-dickerson) - [LinkedIn](https://www.linkedin.com/in/chadrick-dickerson/)
-  - **Christopher Allbritton** - *Turing Student* - [GitHub Profile](https://github.com/Callbritton) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/christopher-allbritton) - [LinkedIn](https://www.linkedin.com/in/christopher-allbritton)
-  - **Dani Coleman** - *Turing Student* - [GitHub Profile](https://github.com/dcoleman21) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/dani-coleman) - [LinkedIn](https://www.linkedin.com/in/dcoleman-21/)
-  - **Joshua Carey** - *Turing Student* - [GitHub Profile](https://github.com/jdcarey128) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/joshua-carey) - [LinkedIn](https://www.linkedin.com/in/carey-joshua/)
+### My Contributions
+  - **Bruce Gordon** - [GitHub Profile](https://github.com/bruce-gordon) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/bruce-gordon) - [LinkedIn](https://www.linkedin.com/in/brucemgordon/)
+  - Redux implementation
+  - React component design
+  - React-cookie implementation
+  - Api CRUD functionality
+  - Sass design and styling
+
+### Collaborators 
+  - **Aaron Townsend** - [GitHub Profile](https://github.com/atownse) - [LinkedIn](https://www.linkedin.com/in/aaron-townsend-667604176/)
+  - **Chadrick Dickerson** - [GitHub Profile](https://github.com/chadrick-d-dev) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/chadrick-dickerson) - [LinkedIn](https://www.linkedin.com/in/chadrick-dickerson/)
+  - **Christopher Allbritton** - [GitHub Profile](https://github.com/Callbritton) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/christopher-allbritton) - [LinkedIn](https://www.linkedin.com/in/christopher-allbritton)
+  - **Dani Coleman** - [GitHub Profile](https://github.com/dcoleman21) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/dani-coleman) - [LinkedIn](https://www.linkedin.com/in/dcoleman-21/)
+  - **Joshua Carey** - [GitHub Profile](https://github.com/jdcarey128) - [Turing Alum Portfolio](https://alumni.turing.io/alumni/joshua-carey) - [LinkedIn](https://www.linkedin.com/in/carey-joshua/)
