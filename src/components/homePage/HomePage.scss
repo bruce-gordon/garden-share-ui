@@ -1,9 +1,15 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
+.no-listings {
+  background-color: $navBarGreen;
+}
+
 .loading {
   text-align: center;
   margin: 1em;
+  background-color: $navBarGreen;
+  color: $white;
 }
 
 .filter {

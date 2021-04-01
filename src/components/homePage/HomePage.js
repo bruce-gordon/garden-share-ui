@@ -109,7 +109,7 @@ const HomePage = ({ listingData, gardener }) => {
       </div>
     )
   } else {
-    return (<h1 className='loading'>There are currently no listings in your area.  Click "Create New Listing" to get started!</h1>)
+    return (<div className='homepage'><h1 className='loading'>There are currently no listings in your area.  Click "Create New Listing" to get started!</h1></div>)
   }
 }
 
