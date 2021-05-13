@@ -1,5 +1,6 @@
 import React from 'react'
 import './ProductCard.scss'
+import GardenShareLogo from '../../images/GardenShareLogo.png';
 import { Link } from "react-router-dom"
 import dropdownData from '../../formOptions/optionData.js'
 
@@ -8,7 +9,11 @@ export default function ProductCard({ id, produceName, type, quantity, unit, zip
     let match = dropdownData.find(dropdown => {
       return dropdown.option === produceName
     });
-    return match.image
+    if (match) {
+      return match.image
+    } else {
+      return GardenShareLogo
+    }
   }
 
   return (

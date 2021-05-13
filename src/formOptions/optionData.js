@@ -53,6 +53,11 @@ const dropdownData = [
     id: 10,
     option: 'Tomatoes',
     image: 'https://larsmontcottages.com/wp-content/uploads/2016/02/tomatos.jpg'
+  },
+  {
+    id: 11,
+    option: 'Peppers',
+    image: 'https://www.tasteofhome.com/wp-content/uploads/2017/11/shutterstock_675290452_1067x800.jpg?w=1067'
   }
 ]
 
